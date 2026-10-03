@@ -36,7 +36,7 @@ jobs:
           web-ext sign --source-dir "$RUNNER_TEMP/src" --artifacts-dir "$RUNNER_TEMP/signed" \
             --channel "${{ inputs.channel }}" \
             ${{ inputs.channel == 'listed' && '--amo-metadata store/amo-metadata.json' || '' }}
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: signed-xpi
           path: ${{ runner.temp }}/signed/*.xpi
