@@ -1,0 +1,97 @@
+{
+  "format": "job-autofill-export",
+  "schemaVersion": 3,
+  "exportedAt": "2026-01-01T00:00:00.000Z",
+  "profiles": [
+    {
+      "id": "demo-home",
+      "name": "Demo - home address",
+      "data": {
+        "firstName": "Alex",
+        "middleName": "Jordan",
+        "lastName": "Sample",
+        "preferredName": "Alex",
+        "email": "alex.sample@example.com",
+        "phone": "555-0142",
+        "phoneType": "Mobile",
+        "addressLine1": "100 Example Street",
+        "addressLine2": "Apt 2",
+        "city": "Springfield",
+        "state": "IL",
+        "postalCode": "62701",
+        "country": "United States",
+        "linkedin": "https://www.example.com/in/alex-sample",
+        "github": "https://www.example.com/alex-sample",
+        "portfolio": "https://alex-sample.example.com",
+        "school": "Example State University",
+        "degree": "Bachelor of Science",
+        "major": "Computer Science",
+        "minor": "Mathematics",
+        "gradMonth": "5",
+        "gradYear": "2027",
+        "gpa": "3.6"
+      }
+    },
+    {
+      "id": "demo-campus",
+      "name": "Demo - campus address",
+      "data": {
+        "firstName": "Alex",
+        "middleName": "Jordan",
+        "lastName": "Sample",
+        "preferredName": "Alex",
+        "email": "alex.sample@example.com",
+        "phone": "555-0143",
+        "phoneType": "Mobile",
+        "addressLine1": "200 Sample Avenue",
+        "addressLine2": "",
+        "city": "Shelbyville",
+        "state": "IN",
+        "postalCode": "46176",
+        "country": "United States",
+        "linkedin": "https://www.example.com/in/alex-sample",
+        "github": "https://www.example.com/alex-sample",
+        "portfolio": "https://alex-sample.example.com",
+        "school": "Example State University",
+        "degree": "Bachelor of Science",
+        "major": "Computer Science",
+        "minor": "Mathematics",
+        "gradMonth": "5",
+        "gradYear": "2027",
+        "gpa": "3.6"
+      }
+    }
+  ],
+  "activeProfileId": "demo-home",
+  "qaBank": {
+    "entries": [
+      {
+        "id": "demo-qa-1",
+        "question": "how did you hear about this position",
+        "aliases": ["how did you hear about us"],
+        "answer": "Company careers page",
+        "sensitive": "",
+        "createdAt": 1767225600000,
+        "updatedAt": 1767225600000
+      },
+      {
+        "id": "demo-qa-2",
+        "question": "why are you interested in working at {company}",
+        "aliases": [],
+        "answer": "I like {company}'s focus on well-made products.",
+        "sensitive": "",
+        "createdAt": 1767225600000,
+        "updatedAt": 1767225600000
+      }
+    ]
+  },
+  "standardAnswers": {
+    "workAuth": "citizen",
+    "sponsorship": "no",
+    "previouslyEmployed": "no",
+    "clientEmployed": "no",
+    "relatives": "no",
+    "referred": "no"
+  },
+  "settings": { "learnMode": false, "companies": [] }
+}

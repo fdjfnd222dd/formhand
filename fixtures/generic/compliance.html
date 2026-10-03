@@ -1,0 +1,179 @@
+<!doctype html>
+<!--
+  Handwritten Phase 3 fixture: compliance / EEO questions in the wording
+  variants seen across ATSs, Q&A bank questions, consent and signature fields.
+  tests/fixtures.test.js asserts every field by id (standard answers STD,
+  Q&A entries in that CASES entry). No external resources: works offline.
+-->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Compliance questions (fixture)</title>
+  <style>
+    body { font: 15px/1.4 sans-serif; max-width: 760px; margin: 24px auto; }
+    label, .row { display: block; margin: 8px 0; }
+  </style>
+</head>
+<body>
+<h1>Apply: Analyst</h1>
+
+<form id="app" action="#" onsubmit="return false">
+  <h3>Application questions</h3>
+
+  <!-- Q&A bank, exact question. -->
+  <label for="hear">How did you hear about us?</label>
+  <input id="hear">
+
+  <!-- Q&A bank, fuzzy ("What is your desired salary?" stored): orange. -->
+  <label for="salary">Desired salary range *</label>
+  <input id="salary" required>
+
+  <!-- Q&A bank, exact, native select. -->
+  <label for="relocate">Are you willing to relocate?</label>
+  <select id="relocate">
+    <option value="">Please select</option>
+    <option>Yes</option>
+    <option>No</option>
+  </select>
+
+  <!-- Sensitive (criminal): the stored question differs by one word, no fuzzy. -->
+  <fieldset>
+    <legend>Have you ever been convicted of a felony? *</legend>
+    <label><input type="radio" name="felony" id="felony-yes" value="Y" required> Yes</label>
+    <label><input type="radio" name="felony" id="felony-no" value="N"> No</label>
+  </fieldset>
+
+  <!-- Relatives: label veto, so exact bank entries only. Exact entry exists. -->
+  <fieldset>
+    <legend>Do you have any relatives employed by Acme?</legend>
+    <label><input type="radio" name="relatives" id="relatives-yes" value="Y"> Yes</label>
+    <label><input type="radio" name="relatives" id="relatives-no" value="N"> No</label>
+  </fieldset>
+
+  <!-- Standard: work authorization, sponsorship (long option texts). -->
+  <label for="auth">Are you legally authorized to work in the United States? *</label>
+  <select id="auth" required>
+    <option value="">Select...</option>
+    <option value="1">Yes</option>
+    <option value="0">No</option>
+  </select>
+
+  <label for="sponsor">Will you now or in the future require sponsorship for employment visa status (e.g. H-1B visa status)?</label>
+  <select id="sponsor">
+    <option value="">Select...</option>
+    <option value="y">Yes, I will require sponsorship</option>
+    <option value="n">No, I will not require sponsorship</option>
+  </select>
+
+  <!-- Standard: other positions, previously employed, client (always orange). -->
+  <fieldset>
+    <legend>Would you like to be considered for other opportunities at Acme?</legend>
+    <label><input type="radio" name="other" id="other-yes"> Yes</label>
+    <label><input type="radio" name="other" id="other-no"> No</label>
+  </fieldset>
+  <fieldset>
+    <legend>Have you previously been employed by Acme?</legend>
+    <label><input type="radio" name="prev" id="prev-yes"> Yes</label>
+    <label><input type="radio" name="prev" id="prev-no"> No</label>
+  </fieldset>
+  <fieldset>
+    <legend>Are you currently employed by a client of Acme?</legend>
+    <label><input type="radio" name="client" id="client-yes"> Yes</label>
+    <label><input type="radio" name="client" id="client-no"> No</label>
+  </fieldset>
+
+  <!-- Standard: privacy acknowledgment (owner answered "Acknowledge"): orange. -->
+  <label><input type="checkbox" id="privacy" required> I acknowledge that my personal data may be transferred to the United States as described in the Privacy Notice. *</label>
+
+  <!-- Consent: never ticked, even though the bank has an exact entry for it. -->
+  <label><input type="checkbox" id="terms" required> I agree to the Terms and Conditions *</label>
+
+  <!-- Look-alikes of standard questions: never touched. -->
+  <label><input type="checkbox" id="alerts"> Send me job alerts and marketing emails about future opportunities. See our Privacy Policy.</label>
+  <label for="customers">Describe your experience working with customers</label>
+  <textarea id="customers"></textarea>
+  <fieldset>
+    <legend>Have you ever worked with Python?</legend>
+    <label><input type="radio" name="py" id="py-yes"> Yes</label>
+    <label><input type="radio" name="py" id="py-no"> No</label>
+  </fieldset>
+
+  <!-- Typed signature: never filled. -->
+  <label for="signature">Signature *</label>
+  <input id="signature" required>
+
+  <h3>Voluntary Self-Identification</h3>
+
+  <label for="gender">Gender</label>
+  <select id="gender">
+    <option value="">Please select</option>
+    <option value="M">Male</option>
+    <option value="F">Female</option>
+    <option value="D">I decline to self-identify</option>
+  </select>
+
+  <label for="hispanic">Are you Hispanic/Latino?</label>
+  <select id="hispanic">
+    <option value="">Please select</option>
+    <option>Yes</option>
+    <option>No</option>
+    <option>Decline To Self Identify</option>
+  </select>
+
+  <fieldset>
+    <legend>Race/Ethnicity</legend>
+    <label><input type="radio" name="race" id="race-white"> White (Not Hispanic or Latino)</label>
+    <label><input type="radio" name="race" id="race-asian"> Asian (Not Hispanic or Latino)</label>
+    <label><input type="radio" name="race" id="race-two"> Two or More Races (Not Hispanic or Latino)</label>
+    <label><input type="radio" name="race" id="race-decline"> Decline To Self Identify</label>
+  </fieldset>
+
+  <!-- Two options both mean "not a protected veteran": never guess, yellow. -->
+  <label for="veteran">Veteran Status</label>
+  <select id="veteran">
+    <option value="">Please select</option>
+    <option>I am not a veteran</option>
+    <option>I am a veteran, but not a protected veteran</option>
+    <option>I identify as one or more of the classifications of protected veteran</option>
+    <option>I don't wish to answer</option>
+  </select>
+
+  <!-- Sexual orientation: EEO-sensitive, no standard question, bank has nothing. -->
+  <label for="orientation">Sexual orientation</label>
+  <select id="orientation">
+    <option value="">Please select</option>
+    <option>Heterosexual</option>
+    <option>Prefer not to say</option>
+  </select>
+
+  <h3>Voluntary Self-Identification of Disability</h3>
+  <p>Form CC-305. Please check one of the boxes below:</p>
+  <label><input type="checkbox" name="disability" id="dis-yes"> Yes, I have a disability (or previously had a disability)</label>
+  <label><input type="checkbox" name="disability" id="dis-no"> No, I do not have a disability and have not had one in the past</label>
+  <label><input type="checkbox" name="disability" id="dis-decline"> I do not want to answer</label>
+
+  <!-- Plain fields in an EEO section may be filled (SPEC.md). -->
+  <label for="eeo-name">Name</label>
+  <input id="eeo-name">
+  <label for="eeo-date">Date</label>
+  <input id="eeo-date">
+
+  <fieldset>
+    <legend>Emergency Contact</legend>
+    <!-- Bank has an exact "name" entry? No: context veto blocks lookup anyway. -->
+    <label for="ec-hear">How did you hear about us?</label>
+    <input id="ec-hear">
+  </fieldset>
+
+  <div class="buttons">
+    <button type="button" id="back">Back</button>
+    <button type="submit" id="submit">Submit</button>
+  </div>
+  <!-- A bare "I agree" box under a neutral legend: still consent, never ticked. -->
+  <fieldset id="extra-info">
+    <legend>Additional information</legend>
+    <label><input type="checkbox" id="agree-bare" name="agree-bare"> I agree</label>
+  </fieldset>
+</form>
+</body>
+</html>

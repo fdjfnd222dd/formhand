@@ -1,0 +1,112 @@
+<!doctype html>
+<!--
+  Workday "Application Questions" step, hand-written to the REAL markup of the captures in
+  fixtures/workday/ (one tenant, 2026-10-02): fkit formFields,
+  button dropdowns with a phantom input, multiselect prompts, abbr required marks,
+  the footer OUTSIDE the page container (Next has NO type attribute). No personal data.
+  Widgets come alive via workday.js.
+  Questions are the real ones with the company renamed to Acme. Two CheckboxGroups (FINRA, certifications): one question each.
+-->
+<html lang="en">
+<head><meta charset="utf-8"><title>Workday-style Application Questions (synthetic)</title></head>
+<body>
+<header>
+  <a data-automation-id="logoLink" href="https://example.invalid/jobs"><img alt=" careers home" data-automation-id="logo"></a>
+  <h1 data-automation-id="headerTitle">Careers</h1>
+  <div data-automation-id="utilityButtonBar">
+    <button id="settingsSelectorButton" data-automation-id="utilityMenuButton" aria-haspopup="listbox" aria-expanded="false" type="button">English</button>
+    <button id="accountSettingsButton" data-automation-id="utilityMenuButton" aria-haspopup="true" type="button">Account</button>
+  </div>
+</header>
+<div id="root"><div id="mainContent" data-mfe-id="applyFlow"><main>
+<div data-automation-id="applyFlowPage">
+  <div><button data-automation-id="backToJobPosting" type="button" role="link">Back to Job Posting</button></div>
+  <h2 data-automation-id="jobTitleHeading">Software Engineer</h2>
+  <div aria-label="Application Progress"><ol data-automation-id="progressBar">
+      <li data-automation-id="progressBarCompletedStep"><div><span></span></div><label aria-live="polite">completed step 1 of 5</label><label>My Information</label></li>
+      <li data-automation-id="progressBarCompletedStep"><div><span></span></div><label aria-live="polite">completed step 2 of 5</label><label>My Experience</label></li>
+      <li data-automation-id="progressBarActiveStep"><div><span></span></div><label aria-live="polite">current step 3 of 5</label><label>Application Questions</label></li>
+      <li data-automation-id="progressBarInactiveStep"><div><span></span></div><label aria-live="polite">step 4 of 5</label><label>Voluntary Disclosures</label></li>
+      <li data-automation-id="progressBarInactiveStep"><div><span></span></div><label aria-live="polite">step 5 of 5</label><label>Review</label></li>
+    </ol></div>
+  <div>
+    <h3 tabindex="-1">Application Questions</h3>
+    <div>* Indicates a required field</div>
+    <div data-automation-id="applyFlowPrimaryQuestionsPage">
+
+    <div role="group" aria-labelledby="primaryQuestionnaire-section">
+      <div data-automation-id="formField-1b2264de5a9410018ab392622cb70001" data-fkit-id="primaryQuestionnaire--1b2264de5a9410018ab392622cb70001">
+        <fieldset><legend><div id="rich-label1"><div data-automation-id="richText"><p><b>Are you a U.S. citizen, lawful permanent resident, refugee, or person granted asylum?</b><abbr title="required">*</abbr></p></div></div></legend>
+        <div><div><button aria-haspopup="listbox" type="button" value="" aria-label=" Select One Required" name="1b2264de5a9410018ab392622cb70001" id="primaryQuestionnaire--1b2264de5a9410018ab392622cb70001" data-options="Yes|No" >Select One</button><input type="text" value=""><span class="menu-icon"><svg width="12" height="12"></svg></span></div></div></fieldset>
+      </div>
+      <div data-automation-id="formField-1b2264de5a9410018ab392622cb70002" data-fkit-id="primaryQuestionnaire--1b2264de5a9410018ab392622cb70002">
+        <fieldset><legend><div id="rich-label2"><div data-automation-id="richText"><p><b>Will you now or in the future require sponsorship for employment visa status?</b><abbr title="required">*</abbr></p></div></div></legend>
+        <div><div><button aria-haspopup="listbox" type="button" value="" aria-label=" Select One Required" name="1b2264de5a9410018ab392622cb70002" id="primaryQuestionnaire--1b2264de5a9410018ab392622cb70002" data-options="Yes|No" >Select One</button><input type="text" value=""><span class="menu-icon"><svg width="12" height="12"></svg></span></div></div></fieldset>
+      </div>
+      <div data-automation-id="formField-1b2264de5a9410018ab392622cb70003" data-fkit-id="primaryQuestionnaire--1b2264de5a9410018ab392622cb70003">
+        <fieldset><legend><div id="rich-label3"><div data-automation-id="richText"><p><b>Have you, or do you currently work for, or with Acme?</b><abbr title="required">*</abbr></p></div></div></legend>
+        <div><div><button aria-haspopup="listbox" type="button" value="" aria-label=" Select One Required" name="1b2264de5a9410018ab392622cb70003" id="primaryQuestionnaire--1b2264de5a9410018ab392622cb70003" data-options="Yes|No" >Select One</button><input type="text" value=""><span class="menu-icon"><svg width="12" height="12"></svg></span></div></div></fieldset>
+      </div>
+      <div data-automation-id="formField-1b2264de5a9410018ab392622cb70004" data-fkit-id="primaryQuestionnaire--1b2264de5a9410018ab392622cb70004">
+        <fieldset><legend><div id="rich-label4"><div data-automation-id="richText"><p><b>Do you have any post-employment obligations to any current or former employer (i.e., non-compete, non-solicitation, etc.) that may prohibit or restrict your employment for a position?</b><abbr title="required">*</abbr></p></div></div></legend>
+        <div><div><button aria-haspopup="listbox" type="button" value="" aria-label=" Select One Required" name="1b2264de5a9410018ab392622cb70004" id="primaryQuestionnaire--1b2264de5a9410018ab392622cb70004" data-options="Yes|No" >Select One</button><input type="text" value=""><span class="menu-icon"><svg width="12" height="12"></svg></span></div></div></fieldset>
+      </div>
+      <div data-automation-id="formField-1b2264de5a9410018ab392622cb70005" data-fkit-id="primaryQuestionnaire--1b2264de5a9410018ab392622cb70005">
+        <fieldset><legend><div id="rich-label5"><div data-automation-id="richText"><p><b>Have you ever taken a FINRA or any other self-regulatory organization licensing exam? (Select all that apply)</b><abbr title="required">*</abbr></p></div></div></legend>
+        <div><div>
+          <fieldset data-automation-id="1b2264de5a9410018ab392622cb70005-CheckboxGroup" id="primaryQuestionnaire--1b2264de5a9410018ab392622cb70005" aria-required="true"><div role="grid" aria-readonly="true">
+            <div role="row"><div role="cell"><input type="checkbox" id="f1x0-1b2264de5a9410018ab392622cb70005" aria-checked="false" aria-required="true"><label for="f1x0-1b2264de5a9410018ab392622cb70005">SIE</label></div></div>
+            <div role="row"><div role="cell"><input type="checkbox" id="f1x1-1b2264de5a9410018ab392622cb70005" aria-checked="false" aria-required="true"><label for="f1x1-1b2264de5a9410018ab392622cb70005">S6</label></div></div>
+            <div role="row"><div role="cell"><input type="checkbox" id="f1x2-1b2264de5a9410018ab392622cb70005" aria-checked="false" aria-required="true"><label for="f1x2-1b2264de5a9410018ab392622cb70005">S7</label></div></div>
+            <div role="row"><div role="cell"><input type="checkbox" id="f1x3-1b2264de5a9410018ab392622cb70005" aria-checked="false" aria-required="true"><label for="f1x3-1b2264de5a9410018ab392622cb70005">S63</label></div></div>
+            <div role="row"><div role="cell"><input type="checkbox" id="f1x4-1b2264de5a9410018ab392622cb70005" aria-checked="false" aria-required="true"><label for="f1x4-1b2264de5a9410018ab392622cb70005">S65</label></div></div>
+            <div role="row"><div role="cell"><input type="checkbox" id="f1x5-1b2264de5a9410018ab392622cb70005" aria-checked="false" aria-required="true"><label for="f1x5-1b2264de5a9410018ab392622cb70005">S66</label></div></div>
+            <div role="row"><div role="cell"><input type="checkbox" id="f1x6-1b2264de5a9410018ab392622cb70005" aria-checked="false" aria-required="true"><label for="f1x6-1b2264de5a9410018ab392622cb70005">S24</label></div></div>
+            <div role="row"><div role="cell"><input type="checkbox" id="f1x7-1b2264de5a9410018ab392622cb70005" aria-checked="false" aria-required="true"><label for="f1x7-1b2264de5a9410018ab392622cb70005">No</label></div></div>
+          </div></fieldset></div></div></fieldset>
+      </div>
+      <div data-automation-id="formField-1b2264de5a9410018ab392622cb70006" data-fkit-id="primaryQuestionnaire--1b2264de5a9410018ab392622cb70006">
+        <fieldset><legend><div id="rich-label6"><div data-automation-id="richText"><p><b>If you selected other OR have taken any of the license exams, please enter the name of the exam AND the month and date the exam was taken.</b></p></div></div></legend>
+        <div><div><textarea id="primaryQuestionnaire--1b2264de5a9410018ab392622cb70006" aria-required="false"></textarea></div></div></fieldset>
+      </div>
+      <div data-automation-id="formField-1b2264de5a9410018ab392622cb70007" data-fkit-id="primaryQuestionnaire--1b2264de5a9410018ab392622cb70007">
+        <fieldset><legend><div id="rich-label7"><div data-automation-id="richText"><p><b>Do you currently hold either one of the these certifications?</b><abbr title="required">*</abbr></p></div></div></legend>
+        <div><div>
+          <fieldset data-automation-id="1b2264de5a9410018ab392622cb70007-CheckboxGroup" id="primaryQuestionnaire--1b2264de5a9410018ab392622cb70007" aria-required="true"><div role="grid" aria-readonly="true">
+            <div role="row"><div role="cell"><input type="checkbox" id="c1x0-1b2264de5a9410018ab392622cb70007" aria-checked="false" aria-required="true"><label for="c1x0-1b2264de5a9410018ab392622cb70007">Chartered Financial Analyst (CFA)</label></div></div>
+            <div role="row"><div role="cell"><input type="checkbox" id="c1x1-1b2264de5a9410018ab392622cb70007" aria-checked="false" aria-required="true"><label for="c1x1-1b2264de5a9410018ab392622cb70007">Certified Financial Planner (CFP)</label></div></div>
+            <div role="row"><div role="cell"><input type="checkbox" id="c1x2-1b2264de5a9410018ab392622cb70007" aria-checked="false" aria-required="true"><label for="c1x2-1b2264de5a9410018ab392622cb70007">None</label></div></div>
+          </div></fieldset></div></div></fieldset>
+      </div>
+      <div data-automation-id="formField-1b2264de5a9410018ab392622cb70008" data-fkit-id="primaryQuestionnaire--1b2264de5a9410018ab392622cb70008">
+        <fieldset><legend><div id="rich-label8"><div data-automation-id="richText"><p><b>Do you have Central Registration Depository (CRD) number?</b><abbr title="required">*</abbr></p></div></div></legend>
+        <div><div><button aria-haspopup="listbox" type="button" value="" aria-label=" Select One Required" name="1b2264de5a9410018ab392622cb70008" id="primaryQuestionnaire--1b2264de5a9410018ab392622cb70008" data-options="Yes|No" >Select One</button><input type="text" value=""><span class="menu-icon"><svg width="12" height="12"></svg></span></div></div></fieldset>
+      </div>
+      <div data-automation-id="formField-1b2264de5a9410018ab392622cb70009" data-fkit-id="primaryQuestionnaire--1b2264de5a9410018ab392622cb70009">
+        <fieldset><legend><div id="rich-label9"><div data-automation-id="richText"><p><b>Under the Employment policy of Acme or any of its subsidiaries, relatives may not work in the same area of responsibility or within the same transactional audit trail. A relative is defined as aunt/uncle, child/stepchild, cousin, daughter-in-law/son-in-law, grandchild, grandparent, guardian, niece/nephew, parent-in-law, parent/stepparent, sister-in-law/brother-in-law, sister/brother, and spouse/domestic partner. To help us ensure compliance with this policy, do you have any relatives employed at Acme or any of its subsidiaries?</b><abbr title="required">*</abbr></p></div></div></legend>
+        <div><div><button aria-haspopup="listbox" type="button" value="" aria-label=" Select One Required" name="1b2264de5a9410018ab392622cb70009" id="primaryQuestionnaire--1b2264de5a9410018ab392622cb70009" data-options="Yes|No" >Select One</button><input type="text" value=""><span class="menu-icon"><svg width="12" height="12"></svg></span></div></div></fieldset>
+      </div>
+      <div data-automation-id="formField-1b2264de5a9410018ab392622cb7000a" data-fkit-id="primaryQuestionnaire--1b2264de5a9410018ab392622cb7000a">
+        <fieldset><legend><div id="rich-label10"><div data-automation-id="richText"><p><b>Are you a current or former Government Official?</b><abbr title="required">*</abbr></p><ul><li>Any officer or employee of a government or any department, agency or instrumentality of a government;</li><li>Any former government officials that may maintain some quasi-government status.</li></ul></div></div></legend>
+        <div><div><button aria-haspopup="listbox" type="button" value="" aria-label=" Select One Required" name="1b2264de5a9410018ab392622cb7000a" id="primaryQuestionnaire--1b2264de5a9410018ab392622cb7000a" data-options="Yes|No" >Select One</button><input type="text" value=""><span class="menu-icon"><svg width="12" height="12"></svg></span></div></div></fieldset>
+      </div>
+      <div data-automation-id="formField-1b2264de5a9410018ab392622cb7000b" data-fkit-id="primaryQuestionnaire--1b2264de5a9410018ab392622cb7000b">
+        <fieldset><legend><div id="rich-label11"><div data-automation-id="richText"><p><b>To the best of your knowledge, did either of the following refer or recommend you for this or any other position with Acme? * A Government Official * A director, officer or senior employee of an Acme client who has authority to award or materially influence any decision to award Acme business.</b><abbr title="required">*</abbr></p></div></div></legend>
+        <div><div><button aria-haspopup="listbox" type="button" value="" aria-label=" Select One Required" name="1b2264de5a9410018ab392622cb7000b" id="primaryQuestionnaire--1b2264de5a9410018ab392622cb7000b" data-options="Yes|No" >Select One</button><input type="text" value=""><span class="menu-icon"><svg width="12" height="12"></svg></span></div></div></fieldset>
+      </div>
+      <div data-automation-id="formField-1b2264de5a9410018ab392622cb7000c" data-fkit-id="primaryQuestionnaire--1b2264de5a9410018ab392622cb7000c">
+        <fieldset><legend><div id="rich-label12"><div data-automation-id="richText"><p><b>Acme would like to consider you for additional and future job openings at Acme using tools that rely on machine learning (also referred to as Artificial Intelligence or AI). By selecting Yes, you consent to the use of your data in this way. By selecting No, you do not consent to the use of your data in this way. Opting into this process is voluntary, and selecting No will not disadvantage consideration of your current application.</b><abbr title="required">*</abbr></p></div></div></legend>
+        <div><div><button aria-haspopup="listbox" type="button" value="" aria-label=" Select One Required" name="1b2264de5a9410018ab392622cb7000c" id="primaryQuestionnaire--1b2264de5a9410018ab392622cb7000c" data-options="Yes|No" >Select One</button><input type="text" value=""><span class="menu-icon"><svg width="12" height="12"></svg></span></div></div></fieldset>
+      </div>
+    </div>
+    </div>
+  </div>
+  <div data-automation-id="pageFooter">
+    <button data-automation-id="pageFooterBackButton">Back</button>
+    <button data-automation-id="pageFooterNextButton">Save and Continue</button>
+  </div>
+</div>
+</main></div></div>
+<script src="workday.js"></script>
+</body>
+</html>

@@ -1,0 +1,5 @@
+{
+  "version": { "license": "MIT" },
+  "categories": { "firefox": ["other"], "android": ["other"] },
+  "summary": { "en-US": "Fills job application forms from profiles and answers stored only in your browser. Press Alt+Z, review, then submit yourself. No account, no tracking, no network access. Never clicks Submit or Next." }
+}

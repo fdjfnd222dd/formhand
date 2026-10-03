@@ -1,0 +1,43 @@
+name: Bug report
+description: A field was filled wrongly, left empty, or something broke.
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **Do not paste or attach anything containing personal data**: no screenshots of your application, no saved pages, no export files.
+        Describe the problem with labels and structure instead.
+  - type: input
+    id: version
+    attributes:
+      label: Extension and Firefox version
+      placeholder: "Formhand 1.0.0, Firefox 142"
+    validations:
+      required: true
+  - type: input
+    id: platform
+    attributes:
+      label: Application platform or site type
+      description: "Greenhouse, Workday, Phenom, Avature, Eightfold, a company's own form, ... (the site's name is optional)"
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened, and what did you expect?
+      description: Name the field by its label text (e.g. "Phone Device Type") and say the colour of its outline, if any.
+    validations:
+      required: true
+  - type: textarea
+    id: console
+    attributes:
+      label: Console line
+      description: "Open the page's Web Console (Ctrl+Shift+K), press Alt+Z, and paste the line starting with `[autofill]`. It lists the adapter and counts only."
+      render: text
+  - type: checkboxes
+    id: privacy
+    attributes:
+      label: Privacy check
+      options:
+        - label: This report contains no personal information (names, addresses, emails, phone numbers, employer or school details).
+          required: true

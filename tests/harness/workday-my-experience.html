@@ -1,0 +1,296 @@
+<!doctype html>
+<!--
+  Workday "My Experience" step, hand-written to the REAL markup of the captures in
+  fixtures/workday/ (one tenant, 2026-10-02): fkit formFields,
+  button dropdowns with a phantom input, multiselect prompts, abbr required marks,
+  the footer OUTSIDE the page container (Next has NO type attribute). No personal data.
+  Widgets come alive via workday.js.
+  Work Experience 1/2 and Education 2 are repeaters we skip (required ones outlined); Education 1 is filled. Work Experience 2 is "currently work here" (no To date).
+-->
+<html lang="en">
+<head><meta charset="utf-8"><title>Workday-style My Experience (synthetic)</title></head>
+<body>
+<header>
+  <a data-automation-id="logoLink" href="https://example.invalid/jobs"><img alt=" careers home" data-automation-id="logo"></a>
+  <h1 data-automation-id="headerTitle">Careers</h1>
+  <div data-automation-id="utilityButtonBar">
+    <button id="settingsSelectorButton" data-automation-id="utilityMenuButton" aria-haspopup="listbox" aria-expanded="false" type="button">English</button>
+    <button id="accountSettingsButton" data-automation-id="utilityMenuButton" aria-haspopup="true" type="button">Account</button>
+  </div>
+</header>
+<div id="root"><div id="mainContent" data-mfe-id="applyFlow"><main>
+<div data-automation-id="applyFlowPage">
+  <div><button data-automation-id="backToJobPosting" type="button" role="link">Back to Job Posting</button></div>
+  <h2 data-automation-id="jobTitleHeading">Software Engineer</h2>
+  <div aria-label="Application Progress"><ol data-automation-id="progressBar">
+      <li data-automation-id="progressBarCompletedStep"><div><span></span></div><label aria-live="polite">completed step 1 of 5</label><label>My Information</label></li>
+      <li data-automation-id="progressBarActiveStep"><div><span></span></div><label aria-live="polite">current step 2 of 5</label><label>My Experience</label></li>
+      <li data-automation-id="progressBarInactiveStep"><div><span></span></div><label aria-live="polite">step 3 of 5</label><label>Application Questions</label></li>
+      <li data-automation-id="progressBarInactiveStep"><div><span></span></div><label aria-live="polite">step 4 of 5</label><label>Voluntary Disclosures</label></li>
+      <li data-automation-id="progressBarInactiveStep"><div><span></span></div><label aria-live="polite">step 5 of 5</label><label>Review</label></li>
+    </ol></div>
+  <div>
+    <h3 tabindex="-1">My Experience</h3>
+    <div>* Indicates a required field</div>
+    <div data-automation-id="applyFlowMyExpPage">
+
+    <div role="group" aria-labelledby="Work-Experience-section">
+      <h4 id="Work-Experience-section">Work Experience</h4>
+      <div role="group" aria-labelledby="Work-Experience-1-panel">
+        <div><h5 id="Work-Experience-1-panel">Work Experience 1</h5><button><span></span>Delete</button></div>
+        <div data-fkit-id="workExperience-893--null">
+      <div data-automation-id="formField-jobTitle" data-fkit-id="workExperience-893--jobTitle">
+        <label for="workExperience-893--jobTitle"><span>Job Title<abbr aria-hidden="true">*</abbr></span></label>
+        <div><div><input id="workExperience-893--jobTitle" name="jobTitle" type="text" aria-required="true" value=""></div><div></div></div>
+      </div>
+      <div data-automation-id="formField-companyName" data-fkit-id="workExperience-893--companyName">
+        <label for="workExperience-893--companyName"><span>Company<abbr aria-hidden="true">*</abbr></span></label>
+        <div><div><input id="workExperience-893--companyName" name="companyName" type="text" aria-required="true" value=""></div><div></div></div>
+      </div>
+      <div data-automation-id="formField-location" data-fkit-id="workExperience-893--location">
+        <label for="workExperience-893--location"><span>Location</span></label>
+        <div><div><input id="workExperience-893--location" name="location" type="text" aria-required="false" value=""></div><div></div></div>
+      </div>
+      <div data-automation-id="formField-currentlyWorkHere">
+        <label for="workExperience-893--currentlyWorkHere"><span>I currently work here</span></label>
+        <div><div><input id="workExperience-893--currentlyWorkHere" name="currentlyWorkHere" type="checkbox" aria-checked="false" aria-required="false" ></div><div></div></div>
+      </div>
+      <div data-automation-id="formField-startDate">
+        <fieldset><legend><label id="label7"><span>From<abbr aria-hidden="true">*</abbr></span></label></legend>
+        <div><div>
+          <div aria-hidden="true" id="helpText-workExperience-893--startDate">current value is MM/YYYY</div>
+          <div id="workExperience-893--startDate" role="group" aria-labelledby="hiddenDateValueId-workExperience-893--startDate" data-automation-id="dateInputWrapper">
+            <div tabindex="-1">
+            <div id="workExperience-893--startDate-dateSectionMonth" tabindex="-1"><div aria-hidden="true" id="workExperience-893--startDate-dateSectionMonth-display" data-automation-id="dateSectionMonth-display">MM</div><input role="spinbutton" aria-label="Month" aria-valuemin="1" aria-valuemax="12" aria-valuetext="MM" aria-describedby="helpText-workExperience-893--startDate" id="workExperience-893--startDate-dateSectionMonth-input" data-automation-id="dateSectionMonth-input" value=""></div>
+            <div>/</div><div id="workExperience-893--startDate-dateSectionYear" tabindex="0"><div aria-hidden="true" id="workExperience-893--startDate-dateSectionYear-display" data-automation-id="dateSectionYear-display">YYYY</div><input role="spinbutton" aria-label="Year" aria-valuemin="1" aria-valuemax="9999" aria-valuetext="YYYY" tabindex="-1" id="workExperience-893--startDate-dateSectionYear-input" data-automation-id="dateSectionYear-input" value=""></div>
+            </div>
+            <div aria-label="Calendar" data-automation-id="dateIcon" role="button" tabindex="0"><span></span></div>
+          </div>
+        </div></div></fieldset>
+      </div>
+      <div data-automation-id="formField-endDate">
+        <fieldset><legend><label id="label8"><span>To<abbr aria-hidden="true">*</abbr></span></label></legend>
+        <div><div>
+          <div aria-hidden="true" id="helpText-workExperience-893--endDate">current value is MM/YYYY</div>
+          <div id="workExperience-893--endDate" role="group" aria-labelledby="hiddenDateValueId-workExperience-893--endDate" data-automation-id="dateInputWrapper">
+            <div tabindex="-1">
+            <div id="workExperience-893--endDate-dateSectionMonth" tabindex="-1"><div aria-hidden="true" id="workExperience-893--endDate-dateSectionMonth-display" data-automation-id="dateSectionMonth-display">MM</div><input role="spinbutton" aria-label="Month" aria-valuemin="1" aria-valuemax="12" aria-valuetext="MM" aria-describedby="helpText-workExperience-893--endDate" id="workExperience-893--endDate-dateSectionMonth-input" data-automation-id="dateSectionMonth-input" value=""></div>
+            <div>/</div><div id="workExperience-893--endDate-dateSectionYear" tabindex="0"><div aria-hidden="true" id="workExperience-893--endDate-dateSectionYear-display" data-automation-id="dateSectionYear-display">YYYY</div><input role="spinbutton" aria-label="Year" aria-valuemin="1" aria-valuemax="9999" aria-valuetext="YYYY" tabindex="-1" id="workExperience-893--endDate-dateSectionYear-input" data-automation-id="dateSectionYear-input" value=""></div>
+            </div>
+            <div aria-label="Calendar" data-automation-id="dateIcon" role="button" tabindex="0"><span></span></div>
+          </div>
+        </div></div></fieldset>
+      </div>
+      <div data-automation-id="formField-roleDescription"><label for="workExperience-893--roleDescription"><span>Role Description</span></label><div><div><textarea id="workExperience-893--roleDescription" aria-required="false"></textarea></div></div></div>
+        </div>
+      </div>
+      <div role="group" aria-labelledby="Work-Experience-2-panel">
+        <div><h5 id="Work-Experience-2-panel">Work Experience 2</h5><button><span></span>Delete</button></div>
+        <div data-fkit-id="workExperience-894--null">
+      <div data-automation-id="formField-jobTitle" data-fkit-id="workExperience-894--jobTitle">
+        <label for="workExperience-894--jobTitle"><span>Job Title<abbr aria-hidden="true">*</abbr></span></label>
+        <div><div><input id="workExperience-894--jobTitle" name="jobTitle" type="text" aria-required="true" value=""></div><div></div></div>
+      </div>
+      <div data-automation-id="formField-companyName" data-fkit-id="workExperience-894--companyName">
+        <label for="workExperience-894--companyName"><span>Company<abbr aria-hidden="true">*</abbr></span></label>
+        <div><div><input id="workExperience-894--companyName" name="companyName" type="text" aria-required="true" value=""></div><div></div></div>
+      </div>
+      <div data-automation-id="formField-location" data-fkit-id="workExperience-894--location">
+        <label for="workExperience-894--location"><span>Location</span></label>
+        <div><div><input id="workExperience-894--location" name="location" type="text" aria-required="false" value=""></div><div></div></div>
+      </div>
+      <div data-automation-id="formField-currentlyWorkHere">
+        <label for="workExperience-894--currentlyWorkHere"><span>I currently work here</span></label>
+        <div><div><input id="workExperience-894--currentlyWorkHere" name="currentlyWorkHere" type="checkbox" aria-checked="false" aria-required="false" ></div><div></div></div>
+      </div>
+      <div data-automation-id="formField-startDate">
+        <fieldset><legend><label id="label9"><span>From<abbr aria-hidden="true">*</abbr></span></label></legend>
+        <div><div>
+          <div aria-hidden="true" id="helpText-workExperience-894--startDate">current value is MM/YYYY</div>
+          <div id="workExperience-894--startDate" role="group" aria-labelledby="hiddenDateValueId-workExperience-894--startDate" data-automation-id="dateInputWrapper">
+            <div tabindex="-1">
+            <div id="workExperience-894--startDate-dateSectionMonth" tabindex="-1"><div aria-hidden="true" id="workExperience-894--startDate-dateSectionMonth-display" data-automation-id="dateSectionMonth-display">MM</div><input role="spinbutton" aria-label="Month" aria-valuemin="1" aria-valuemax="12" aria-valuetext="MM" aria-describedby="helpText-workExperience-894--startDate" id="workExperience-894--startDate-dateSectionMonth-input" data-automation-id="dateSectionMonth-input" value=""></div>
+            <div>/</div><div id="workExperience-894--startDate-dateSectionYear" tabindex="0"><div aria-hidden="true" id="workExperience-894--startDate-dateSectionYear-display" data-automation-id="dateSectionYear-display">YYYY</div><input role="spinbutton" aria-label="Year" aria-valuemin="1" aria-valuemax="9999" aria-valuetext="YYYY" tabindex="-1" id="workExperience-894--startDate-dateSectionYear-input" data-automation-id="dateSectionYear-input" value=""></div>
+            </div>
+            <div aria-label="Calendar" data-automation-id="dateIcon" role="button" tabindex="0"><span></span></div>
+          </div>
+        </div></div></fieldset>
+      </div>
+      <div data-automation-id="formField-roleDescription"><label for="workExperience-894--roleDescription"><span>Role Description</span></label><div><div><textarea id="workExperience-894--roleDescription" aria-required="false"></textarea></div></div></div>
+        </div>
+      </div>
+      <div><div><div><button data-automation-id="add-button">Add Another</button></div></div></div>
+    </div>
+    <div role="group" aria-labelledby="Education-section">
+      <h4 id="Education-section">Education</h4>
+      <div><div data-automation-id="instructionalText">After typing your school keyword(s) press 'enter' to search.</div></div>
+      <div role="group" aria-labelledby="Education-1-panel">
+        <div><h5 id="Education-1-panel">Education 1</h5><button><span></span>Delete</button></div>
+        <div data-fkit-id="education-896--null">
+      <div data-automation-id="formField-school" data-fkit-id="education-896--school">
+        <label for="education-896--school"><span>School or University<abbr aria-hidden="true">*</abbr></span></label>
+        <div><div><div data-automation-id="multiSelectContainer" id="ms-v98l10" data-uxi-widget-type="multiselect" tabindex="-1">
+          <div data-automation-id="multiselectInputContainer">
+            <div data-automation-hiddensearch="false">
+              <input enterkeyhint="search" placeholder="Search" autocomplete="off" aria-required="true" aria-invalid="false" aria-disabled="false" aria-describedby="hint-v98l10" data-uxi-widget-type="selectinput" data-uxi-multiselect-id="ms-v98l10" data-uxi-element-id="selectinput-v98l10" id="education-896--school" value="" data-prompt-options="San Diego Christian College|San Diego State University">
+              <div data-automation-id="promptSelectionLabel"></div>
+              <div id="hint-v98l10" aria-hidden="true" data-automation-id="promptAriaInstruction">0 items selected</div>
+            </div>
+            <span data-automation-id="promptIcon" aria-hidden="true" data-uxi-widget-type="selectinputicon"></span>
+          </div>
+        </div></div><div></div></div>
+      </div>
+      <div data-automation-id="formField-degree" data-fkit-id="education-896--degree">
+        <label for="education-896--degree"><span>Degree<abbr aria-hidden="true">*</abbr></span></label>
+        <div><div><button aria-haspopup="listbox" type="button" value="" aria-label="Degree Select One Required" name="degree" id="education-896--degree" data-options="LLM - Master of Laws|M.S.T. - Master of Science in Taxation|Graduate Degree|Bachelor of Music|Undergraduate Degree|Undergraduate Degree or Equivalent Experience|EdD - Doctor of Education|A.S. - Associate of Science|PsyD - Doctor of Psychology|HS - High School|M.D. - Medical Doctor|MBA - Master of Business Administration|PhD - Doctor of Philosophy|B.A. - Bachelor of Arts|Bachelor of Business Administration|GED - General Equivalency Diploma|B.S. - Bachelor of Science|M.A. - Master of Arts|A.A. - Associate of Arts|Bachelor of Commerce|JD - Juris Doctor|M.S. - Master of Science" >Select One</button><input type="text" value=""><span class="menu-icon"><svg width="12" height="12"></svg></span></div><div></div></div>
+      </div>
+      <div data-automation-id="formField-fieldOfStudy" data-fkit-id="education-896--fieldOfStudy">
+        <label for="education-896--fieldOfStudy"><span>Field of Study</span></label>
+        <div><div><div data-automation-id="multiSelectContainer" id="ms-v98l11" data-uxi-widget-type="multiselect" tabindex="-1">
+          <div data-automation-id="multiselectInputContainer">
+            <div data-automation-hiddensearch="false">
+              <input enterkeyhint="search" placeholder="Search" autocomplete="off" aria-required="false" aria-invalid="false" aria-disabled="false" aria-describedby="hint-v98l11" data-uxi-widget-type="selectinput" data-uxi-multiselect-id="ms-v98l11" data-uxi-element-id="selectinput-v98l11" id="education-896--fieldOfStudy" value="" data-prompt-options="Computer Engineering|Computer Science">
+              <div data-automation-id="promptSelectionLabel"></div>
+              <div id="hint-v98l11" aria-hidden="true" data-automation-id="promptAriaInstruction">0 items selected</div>
+            </div>
+            <span data-automation-id="promptIcon" aria-hidden="true" data-uxi-widget-type="selectinputicon"></span>
+          </div>
+        </div><button type="button" aria-label="The field will alphabetically return the first 100 results and can also return specified matches."><span></span></button></div><div></div></div>
+      </div>
+      <div data-automation-id="formField-gradeAverage" data-fkit-id="education-896--gradeAverage">
+        <label for="education-896--gradeAverage"><span>Overall Result (GPA)</span></label>
+        <div><div><input id="education-896--gradeAverage" name="gradeAverage" type="text" aria-required="false" value=""></div><div></div></div>
+      </div>
+      <div data-automation-id="formField-firstYearAttended">
+        <fieldset><legend><label id="label12"><span>From</span></label></legend>
+        <div><div>
+          <div aria-hidden="true" id="helpText-education-896--firstYearAttended">current value is YYYY</div>
+          <div id="education-896--firstYearAttended" role="group" aria-labelledby="hiddenDateValueId-education-896--firstYearAttended" data-automation-id="dateInputWrapper">
+            <div tabindex="-1">
+            <div id="education-896--firstYearAttended-dateSectionYear" tabindex="0"><div aria-hidden="true" id="education-896--firstYearAttended-dateSectionYear-display" data-automation-id="dateSectionYear-display">YYYY</div><input role="spinbutton" aria-label="Year" aria-valuemin="1" aria-valuemax="9999" aria-valuetext="YYYY" tabindex="-1" id="education-896--firstYearAttended-dateSectionYear-input" data-automation-id="dateSectionYear-input" value=""></div>
+            </div>
+            
+          </div>
+        </div></div></fieldset>
+      </div>
+      <div data-automation-id="formField-lastYearAttended">
+        <fieldset><legend><label id="label13"><span>To (Actual or Expected)</span></label></legend>
+        <div><div>
+          <div aria-hidden="true" id="helpText-education-896--lastYearAttended">current value is YYYY</div>
+          <div id="education-896--lastYearAttended" role="group" aria-labelledby="hiddenDateValueId-education-896--lastYearAttended" data-automation-id="dateInputWrapper">
+            <div tabindex="-1">
+            <div id="education-896--lastYearAttended-dateSectionYear" tabindex="0"><div aria-hidden="true" id="education-896--lastYearAttended-dateSectionYear-display" data-automation-id="dateSectionYear-display">YYYY</div><input role="spinbutton" aria-label="Year" aria-valuemin="1" aria-valuemax="9999" aria-valuetext="YYYY" tabindex="-1" id="education-896--lastYearAttended-dateSectionYear-input" data-automation-id="dateSectionYear-input" value=""></div>
+            </div>
+            
+          </div>
+        </div></div></fieldset>
+      </div>
+        </div>
+      </div>
+      <div role="group" aria-labelledby="Education-2-panel">
+        <div><h5 id="Education-2-panel">Education 2</h5><button><span></span>Delete</button></div>
+        <div data-fkit-id="education-897--null">
+      <div data-automation-id="formField-school" data-fkit-id="education-897--school">
+        <label for="education-897--school"><span>School or University<abbr aria-hidden="true">*</abbr></span></label>
+        <div><div><div data-automation-id="multiSelectContainer" id="ms-v98l14" data-uxi-widget-type="multiselect" tabindex="-1">
+          <div data-automation-id="multiselectInputContainer">
+            <div data-automation-hiddensearch="false">
+              <input enterkeyhint="search" placeholder="Search" autocomplete="off" aria-required="true" aria-invalid="false" aria-disabled="false" aria-describedby="hint-v98l14" data-uxi-widget-type="selectinput" data-uxi-multiselect-id="ms-v98l14" data-uxi-element-id="selectinput-v98l14" id="education-897--school" value="" data-prompt-options="San Diego Christian College|San Diego State University">
+              <div data-automation-id="promptSelectionLabel"></div>
+              <div id="hint-v98l14" aria-hidden="true" data-automation-id="promptAriaInstruction">0 items selected</div>
+            </div>
+            <span data-automation-id="promptIcon" aria-hidden="true" data-uxi-widget-type="selectinputicon"></span>
+          </div>
+        </div></div><div></div></div>
+      </div>
+      <div data-automation-id="formField-degree" data-fkit-id="education-897--degree">
+        <label for="education-897--degree"><span>Degree<abbr aria-hidden="true">*</abbr></span></label>
+        <div><div><button aria-haspopup="listbox" type="button" value="" aria-label="Degree Select One Required" name="degree" id="education-897--degree" data-options="LLM - Master of Laws|M.S.T. - Master of Science in Taxation|Graduate Degree|Bachelor of Music|Undergraduate Degree|Undergraduate Degree or Equivalent Experience|EdD - Doctor of Education|A.S. - Associate of Science|PsyD - Doctor of Psychology|HS - High School|M.D. - Medical Doctor|MBA - Master of Business Administration|PhD - Doctor of Philosophy|B.A. - Bachelor of Arts|Bachelor of Business Administration|GED - General Equivalency Diploma|B.S. - Bachelor of Science|M.A. - Master of Arts|A.A. - Associate of Arts|Bachelor of Commerce|JD - Juris Doctor|M.S. - Master of Science" >Select One</button><input type="text" value=""><span class="menu-icon"><svg width="12" height="12"></svg></span></div><div></div></div>
+      </div>
+      <div data-automation-id="formField-fieldOfStudy" data-fkit-id="education-897--fieldOfStudy">
+        <label for="education-897--fieldOfStudy"><span>Field of Study</span></label>
+        <div><div><div data-automation-id="multiSelectContainer" id="ms-v98l15" data-uxi-widget-type="multiselect" tabindex="-1">
+          <div data-automation-id="multiselectInputContainer">
+            <div data-automation-hiddensearch="false">
+              <input enterkeyhint="search" placeholder="Search" autocomplete="off" aria-required="false" aria-invalid="false" aria-disabled="false" aria-describedby="hint-v98l15" data-uxi-widget-type="selectinput" data-uxi-multiselect-id="ms-v98l15" data-uxi-element-id="selectinput-v98l15" id="education-897--fieldOfStudy" value="" data-prompt-options="Computer Engineering|Computer Science">
+              <div data-automation-id="promptSelectionLabel"></div>
+              <div id="hint-v98l15" aria-hidden="true" data-automation-id="promptAriaInstruction">0 items selected</div>
+            </div>
+            <span data-automation-id="promptIcon" aria-hidden="true" data-uxi-widget-type="selectinputicon"></span>
+          </div>
+        </div><button type="button" aria-label="The field will alphabetically return the first 100 results and can also return specified matches."><span></span></button></div><div></div></div>
+      </div>
+      <div data-automation-id="formField-gradeAverage" data-fkit-id="education-897--gradeAverage">
+        <label for="education-897--gradeAverage"><span>Overall Result (GPA)</span></label>
+        <div><div><input id="education-897--gradeAverage" name="gradeAverage" type="text" aria-required="false" value=""></div><div></div></div>
+      </div>
+      <div data-automation-id="formField-firstYearAttended">
+        <fieldset><legend><label id="label16"><span>From</span></label></legend>
+        <div><div>
+          <div aria-hidden="true" id="helpText-education-897--firstYearAttended">current value is YYYY</div>
+          <div id="education-897--firstYearAttended" role="group" aria-labelledby="hiddenDateValueId-education-897--firstYearAttended" data-automation-id="dateInputWrapper">
+            <div tabindex="-1">
+            <div id="education-897--firstYearAttended-dateSectionYear" tabindex="0"><div aria-hidden="true" id="education-897--firstYearAttended-dateSectionYear-display" data-automation-id="dateSectionYear-display">YYYY</div><input role="spinbutton" aria-label="Year" aria-valuemin="1" aria-valuemax="9999" aria-valuetext="YYYY" tabindex="-1" id="education-897--firstYearAttended-dateSectionYear-input" data-automation-id="dateSectionYear-input" value=""></div>
+            </div>
+            
+          </div>
+        </div></div></fieldset>
+      </div>
+      <div data-automation-id="formField-lastYearAttended">
+        <fieldset><legend><label id="label17"><span>To (Actual or Expected)</span></label></legend>
+        <div><div>
+          <div aria-hidden="true" id="helpText-education-897--lastYearAttended">current value is YYYY</div>
+          <div id="education-897--lastYearAttended" role="group" aria-labelledby="hiddenDateValueId-education-897--lastYearAttended" data-automation-id="dateInputWrapper">
+            <div tabindex="-1">
+            <div id="education-897--lastYearAttended-dateSectionYear" tabindex="0"><div aria-hidden="true" id="education-897--lastYearAttended-dateSectionYear-display" data-automation-id="dateSectionYear-display">YYYY</div><input role="spinbutton" aria-label="Year" aria-valuemin="1" aria-valuemax="9999" aria-valuetext="YYYY" tabindex="-1" id="education-897--lastYearAttended-dateSectionYear-input" data-automation-id="dateSectionYear-input" value=""></div>
+            </div>
+            
+          </div>
+        </div></div></fieldset>
+      </div>
+        </div>
+      </div>
+      <button data-automation-id="add-button">Add Another</button>
+    </div>
+
+    <div role="group" aria-labelledby="Skills-section">
+      <h4 id="Skills-section">Skills</h4>
+      <div data-automation-id="formField-skills" data-fkit-id="skills--skills">
+        <label for="skills--skills"><span>Type to Add Skills</span></label>
+        <div><div><div data-automation-id="multiSelectContainer" id="ms-v98l18" data-uxi-widget-type="multiselect" tabindex="-1">
+          <div data-automation-id="multiselectInputContainer">
+            <div data-automation-hiddensearch="false">
+              <input enterkeyhint="search" placeholder="Search" autocomplete="off" aria-required="false" aria-invalid="false" aria-disabled="false" aria-describedby="hint-v98l18" data-uxi-widget-type="selectinput" data-uxi-multiselect-id="ms-v98l18" data-uxi-element-id="selectinput-v98l18" id="skills--skills" value="" data-prompt-options="Python|JavaScript">
+              <div data-automation-id="promptSelectionLabel"></div>
+              <div id="hint-v98l18" aria-hidden="true" data-automation-id="promptAriaInstruction">0 items selected</div>
+            </div>
+            <span data-automation-id="promptIcon" aria-hidden="true" data-uxi-widget-type="selectinputicon"></span>
+          </div>
+        </div></div><div></div></div>
+      </div>
+    </div>
+    <div role="group" aria-labelledby="Resume/CV-section">
+      <h4 id="Resume/CV-section">Resume/CV</h4>
+      <div data-automation-id="formField-">
+        <label id="label19">Upload a file (5MB max)</label>
+        <div data-automation-id="attachments-FileUpload" aria-labelledby="label19"><div file-upload-drop-zone><div>Drop files here</div><div>or</div>
+          <button type="button" data-automation-id="select-files" id="resumeAttachments--attachments">Select files</button></div>
+          <input type="file" multiple data-automation-id="file-upload-input-ref"></div>
+      </div>
+    </div>
+    <div role="group" aria-labelledby="Websites-section">
+      <h4 id="Websites-section">Websites</h4>
+      <div>Add any relevant websites.</div>
+      <button data-automation-id="add-button">Add</button>
+    </div>
+    </div>
+  </div>
+  <div data-automation-id="pageFooter">
+    <button data-automation-id="pageFooterBackButton">Back</button>
+    <button data-automation-id="pageFooterNextButton">Save and Continue</button>
+  </div>
+</div>
+</main></div></div>
+<script src="workday.js"></script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Formhand</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <h1>Formhand</h1>
+  <fieldset>
+    <legend>Profile</legend>
+    <div id="profile-list"></div>
+  </fieldset>
+  <p id="active-line" class="note"></p>
+  <button type="button" id="fill-btn">Fill this page <span class="hint">(Alt+Z)</span></button>
+  <label class="check"><input type="checkbox" id="learn-mode"> Learn mode</label>
+  <div id="embed-perm" class="perm" hidden>
+    <p>Embedded Greenhouse, Lever and Ashby forms (inside company career pages) can be filled in place once
+      you allow access to those four sites.</p>
+    <button type="button" id="embed-allow">Allow embedded forms</button>
+  </div>
+  <p><button type="button" id="options-btn" class="link">Profiles &amp; answers…</button></p>
+  <script src="../core/embed.js"></script>
+  <script src="../core/storage.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>

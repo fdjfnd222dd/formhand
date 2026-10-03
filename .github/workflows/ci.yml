@@ -1,0 +1,31 @@
+# Lint + tests on every push and pull request.
+# Note: the tests that use real saved application pages skip themselves in CI (those pages are gitignored on purpose,
+# they contain personal data). CI runs the hand-written fixtures, the pure-logic tests and the widget harnesses.
+name: CI
+on:
+  push:
+    branches: [main]
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Lint (web-ext)
+        run: npx --yes web-ext lint --warnings-as-errors
+      - name: Install Playwright Firefox
+        run: npx playwright install --with-deps firefox
+      - name: Tests
+        run: npm test
+      - name: Package contents are what we expect
+        run: |
+          npm i -g web-ext
+          scripts/build-xpi.sh "$RUNNER_TEMP/xpi"

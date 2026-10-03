@@ -1,0 +1,31 @@
+# Runs when a version tag (v1.2.3) is pushed: checks the tag matches manifest.json, builds the allow-listed package,
+# attaches a build-provenance attestation, and creates a GitHub Release with the zip. It does NOT talk to AMO.
+name: Release
+on:
+  push:
+    tags: ['v*']
+permissions:
+  contents: write
+  id-token: write
+  attestations: write
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Tag must equal manifest version
+        run: |
+          v="$(node -p "require('./manifest.json').version")"
+          [ "v$v" = "${GITHUB_REF_NAME}" ] || { echo "tag ${GITHUB_REF_NAME} != manifest $v"; exit 1; }
+      - run: npm i -g web-ext
+      - run: scripts/build-xpi.sh "$PWD/dist"
+      - uses: actions/attest@v4
+        with:
+          subject-path: dist/*.zip
+      - name: GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release create "${GITHUB_REF_NAME}" dist/*.zip --title "${GITHUB_REF_NAME}" --notes-file CHANGELOG.md

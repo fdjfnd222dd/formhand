@@ -1,0 +1,164 @@
+<!doctype html>
+<!--
+  Workday "My Information" step, hand-written to the REAL markup of the captures in
+  fixtures/workday/ (one tenant, 2026-10-02): fkit formFields,
+  button dropdowns with a phantom input, multiselect prompts, abbr required marks,
+  the footer OUTSIDE the page container (Next has NO type attribute). No personal data.
+  Widgets come alive via workday.js.
+  Country reveals State + Postal Code (after City); the preferred-name box reveals Preferred First Name.
+-->
+<html lang="en">
+<head><meta charset="utf-8"><title>Workday-style My Information (synthetic)</title></head>
+<body>
+<header>
+  <a data-automation-id="logoLink" href="https://example.invalid/jobs"><img alt=" careers home" data-automation-id="logo"></a>
+  <h1 data-automation-id="headerTitle">Careers</h1>
+  <div data-automation-id="utilityButtonBar">
+    <button id="settingsSelectorButton" data-automation-id="utilityMenuButton" aria-haspopup="listbox" aria-expanded="false" type="button">English</button>
+    <button id="accountSettingsButton" data-automation-id="utilityMenuButton" aria-haspopup="true" type="button">Account</button>
+  </div>
+</header>
+<div id="root"><div id="mainContent" data-mfe-id="applyFlow"><main>
+<div data-automation-id="applyFlowPage">
+  <div><button data-automation-id="backToJobPosting" type="button" role="link">Back to Job Posting</button></div>
+  <h2 data-automation-id="jobTitleHeading">Software Engineer</h2>
+  <div aria-label="Application Progress"><ol data-automation-id="progressBar">
+      <li data-automation-id="progressBarActiveStep"><div><span></span></div><label aria-live="polite">current step 1 of 5</label><label>My Information</label></li>
+      <li data-automation-id="progressBarInactiveStep"><div><span></span></div><label aria-live="polite">step 2 of 5</label><label>My Experience</label></li>
+      <li data-automation-id="progressBarInactiveStep"><div><span></span></div><label aria-live="polite">step 3 of 5</label><label>Application Questions</label></li>
+      <li data-automation-id="progressBarInactiveStep"><div><span></span></div><label aria-live="polite">step 4 of 5</label><label>Voluntary Disclosures</label></li>
+      <li data-automation-id="progressBarInactiveStep"><div><span></span></div><label aria-live="polite">step 5 of 5</label><label>Review</label></li>
+    </ol></div>
+  <div>
+    <h3 tabindex="-1">My Information</h3>
+    <div>* Indicates a required field</div>
+    <div data-automation-id="applyFlowMyInfoPage">
+
+
+    <div role="group" aria-labelledby="source-section">
+      <div data-automation-id="formField-source" data-fkit-id="source--source">
+        <label for="source--source"><span>How Did You Hear About Us?<abbr aria-hidden="true">*</abbr></span></label>
+        <div><div><div data-automation-id="multiSelectContainer" id="ms-v98l1" data-uxi-widget-type="multiselect" tabindex="-1">
+          <div data-automation-id="multiselectInputContainer">
+            <div data-automation-hiddensearch="false">
+              <input enterkeyhint="search" placeholder="Search" autocomplete="off" aria-required="true" aria-invalid="false" aria-disabled="false" aria-describedby="hint-v98l1" data-uxi-widget-type="selectinput" data-uxi-multiselect-id="ms-v98l1" data-uxi-element-id="selectinput-v98l1" id="source--source" value="" data-prompt-options="LinkedIn|Indeed" data-prompt-categories="Job Board|Social Media">
+              <div data-automation-id="promptSelectionLabel"></div>
+              <div id="hint-v98l1" aria-hidden="true" data-automation-id="promptAriaInstruction">0 items selected</div>
+            </div>
+            <span data-automation-id="promptIcon" aria-hidden="true" data-uxi-widget-type="selectinputicon"></span>
+          </div>
+        </div></div><div></div></div>
+      </div>
+    </div>
+
+    <div role="group" aria-labelledby="previousWorker-section">
+      <div data-automation-id="formField-candidateIsPreviousWorker">
+        <fieldset><legend><label id="radio-label4"><span>Do you currently work, or have you ever worked for or with Acme in any of the following ways: - as a Crew Member - through a Staffing Agency<abbr aria-hidden="true">*</abbr></span></label></legend>
+        <div><div>
+          <div name="candidateIsPreviousWorker" aria-labelledby="radio-label4" id="previousWorker--candidateIsPreviousWorker" aria-required="true">
+            <div><div><input id="v98l2" name="candidateIsPreviousWorker" type="radio" aria-checked="false" value="true"><span></span></div><label for="v98l2">Yes</label></div>
+            <div><div><input id="v98l3" name="candidateIsPreviousWorker" type="radio" aria-checked="false" value="false"><span></span></div><label for="v98l3">No</label></div>
+          </div>
+        </div></div></fieldset>
+      </div>
+    </div>
+
+    <div role="group" aria-labelledby="country-section">
+      <div data-automation-id="formField-country" data-fkit-id="country--country">
+        <label for="country--country"><span>Country<abbr aria-hidden="true">*</abbr></span></label>
+        <div><div><button aria-haspopup="listbox" type="button" value="" aria-label="Country Select One Required" name="country" id="country--country" data-options="Canada|United States Minor Outlying Islands|United States of America" data-reveal="United States of America=us-address" data-reveal-after="#formField-city-anchor">Select One</button><input type="text" value=""><span class="menu-icon"><svg width="12" height="12"></svg></span></div><div></div></div>
+      </div>
+    </div>
+
+    <div role="group" aria-labelledby="Legal-Name-section">
+      <h4 id="Legal-Name-section">Legal Name</h4>
+      <div data-automation-id="formField-legalName--firstName" data-fkit-id="name--legalName--firstName">
+        <label for="name--legalName--firstName"><span>First Name<abbr aria-hidden="true">*</abbr></span></label>
+        <div><div><input id="name--legalName--firstName" name="legalName--firstName" type="text" aria-required="true" value=""></div><div></div></div>
+      </div>
+      <div data-automation-id="formField-legalName--lastName" data-fkit-id="name--legalName--lastName">
+        <label for="name--legalName--lastName"><span>Last Name<abbr aria-hidden="true">*</abbr></span></label>
+        <div><div><input id="name--legalName--lastName" name="legalName--lastName" type="text" aria-required="true" value=""></div><div></div></div>
+      </div>
+      <div data-automation-id="formField-preferredCheck" data-fkit-id="name--preferredCheck">
+        <label for="name--preferredCheck"><span>I have a preferred name</span></label>
+        <div><div><input id="name--preferredCheck" name="preferredCheck" type="checkbox" aria-checked="false" aria-required="false" data-reveal-checked="preferred-fields"></div><div></div></div>
+      </div>
+    </div>
+
+    <div role="group" aria-labelledby="Address-section">
+      <h4 id="Address-section">Address</h4>
+      <div data-automation-id="formField-addressLine1" data-fkit-id="address--addressLine1">
+        <label for="address--addressLine1"><span>Address Line 1<abbr aria-hidden="true">*</abbr></span></label>
+        <div><div><input id="address--addressLine1" name="addressLine1" type="text" aria-required="true" value=""></div><div></div></div>
+      </div>
+      <div id="formField-city-anchor" data-automation-id="formField-city" data-fkit-id="address--city">
+        <label for="address--city"><span>City<abbr aria-hidden="true">*</abbr></span></label>
+        <div><div><input id="address--city" name="city" type="text" aria-required="true" value=""></div><div></div></div>
+      </div>
+      <div data-automation-id="formField-regionSubdivision1" data-fkit-id="address--regionSubdivision1">
+        <label for="address--regionSubdivision1"><span>County</span></label>
+        <div><div><input id="address--regionSubdivision1" name="regionSubdivision1" type="text" aria-required="false" value=""></div><div></div></div>
+      </div>
+    </div>
+
+    <div role="group" aria-labelledby="Email-Address-section">
+      <h4 id="Email-Address-section">Email Address</h4>
+      <div><label for="emailAddress"></label><span id="emailAddress">alex.rivera@example.com</span></div>
+    </div>
+
+    <div role="group" aria-labelledby="Phone-section">
+      <h4 id="Phone-section">Phone</h4>
+      <div data-automation-id="formField-phoneType" data-fkit-id="phoneNumber--phoneType">
+        <label for="phoneNumber--phoneType"><span>Phone Device Type<abbr aria-hidden="true">*</abbr></span></label>
+        <div><div><button aria-haspopup="listbox" type="button" value="" aria-label="Phone Device Type Select One Required" name="phoneType" id="phoneNumber--phoneType" data-options="Cell|Home|Work" >Select One</button><input type="text" value=""><span class="menu-icon"><svg width="12" height="12"></svg></span></div><div></div></div>
+      </div>
+      <div data-automation-id="formField-countryPhoneCode" data-fkit-id="phoneNumber--countryPhoneCode">
+        <label for="phoneNumber--countryPhoneCode"><span>Country Phone Code<abbr aria-hidden="true">*</abbr></span></label>
+        <div><div><div data-automation-id="multiSelectContainer" id="ms-v98l5" data-uxi-widget-type="multiselect" tabindex="-1">
+          <div data-automation-id="multiselectInputContainer">
+            <div data-automation-hiddensearch="false">
+              <input enterkeyhint="search" placeholder="Search" autocomplete="off" aria-required="true" aria-invalid="false" aria-disabled="false" aria-describedby="hint-v98l5" data-uxi-widget-type="selectinput" data-uxi-multiselect-id="ms-v98l5" data-uxi-element-id="selectinput-v98l5" id="phoneNumber--countryPhoneCode" value="" data-prompt-options="American Samoa (+1)|United States of America (+1)|United Kingdom (+44)" data-prompt-categories="Countries">
+              <div data-automation-id="promptSelectionLabel"></div>
+              <div id="hint-v98l5" aria-hidden="true" data-automation-id="promptAriaInstruction">0 items selected</div>
+            </div>
+            <span data-automation-id="promptIcon" aria-hidden="true" data-uxi-widget-type="selectinputicon"></span>
+          </div>
+        </div></div><div></div></div>
+      </div>
+      <div data-automation-id="formField-phoneNumber" data-fkit-id="phoneNumber--phoneNumber">
+        <label for="phoneNumber--phoneNumber"><span>Phone Number<abbr aria-hidden="true">*</abbr></span></label>
+        <div><div><input id="phoneNumber--phoneNumber" name="phoneNumber" type="text" aria-required="true" value=""></div><div></div></div>
+      </div>
+      <div data-automation-id="formField-extension" data-fkit-id="phoneNumber--extension">
+        <label for="phoneNumber--extension"><span>Phone Extension</span></label>
+        <div><div><input id="phoneNumber--extension" name="extension" type="text" aria-required="false" value=""></div><div></div></div>
+      </div>
+    </div>
+    <input id="v98l6" type="checkbox" aria-checked="false" data-automation-id="phone-sms-opt-in"><a data-automation-id="phone-terms-and-condition-link" href="" target="_blank">Terms and Conditions</a>
+    </div>
+  </div>
+  <div data-automation-id="pageFooter">
+    <button data-automation-id="pageFooterNextButton">Save and Continue</button>
+  </div>
+</div>
+</main></div></div>
+<template id="us-address">
+  <div data-automation-id="formField-countryRegion" data-fkit-id="address--countryRegion">
+    <label for="address--countryRegion"><span>State<abbr aria-hidden="true">*</abbr></span></label>
+    <div><div><button aria-haspopup="listbox" type="button" value="" aria-label="State Select One Required" name="countryRegion" id="address--countryRegion" data-options="Arizona|California|West Virginia|Virginia" >Select One</button><input type="text" value=""><span class="menu-icon"><svg width="12" height="12"></svg></span></div><div></div></div>
+  </div>
+  <div data-automation-id="formField-postalCode" data-fkit-id="address--postalCode">
+    <label for="address--postalCode"><span>Postal Code<abbr aria-hidden="true">*</abbr></span></label>
+    <div><div><input id="address--postalCode" name="postalCode" type="text" aria-required="true" value=""></div><div></div></div>
+  </div>
+</template>
+<template id="preferred-fields">
+  <div data-automation-id="formField-preferredName" data-fkit-id="name--legalName--preferredFirstName">
+    <label for="name--legalName--preferredFirstName"><span>Preferred First Name</span></label>
+    <div><div><input id="name--legalName--preferredFirstName" name="preferredFirstName" type="text" aria-required="false" value=""></div><div></div></div>
+  </div>
+</template>
+<script src="workday.js"></script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Learn mode harness</title>
+</head>
+<body>
+<form id="f" onsubmit="return false">
+  <div>
+    <label for="hear">How did you hear about us?</label>
+    <input type="text" id="hear" name="hear">
+  </div>
+  <div>
+    <label for="email">Email</label>
+    <input type="text" id="email" name="email">
+  </div>
+  <div>
+    <label for="relocate">Are you willing to relocate?</label>
+    <select id="relocate" name="relocate">
+      <option value="">Please select</option>
+      <option value="yes">Yes</option>
+      <option value="no">No</option>
+    </select>
+  </div>
+  <fieldset id="arrangement">
+    <legend>Preferred work arrangement</legend>
+    <label><input type="radio" name="arr" value="remote"> Remote</label>
+    <label><input type="radio" name="arr" value="hybrid"> Hybrid</label>
+    <label><input type="radio" name="arr" value="onsite"> On-site</label>
+  </fieldset>
+  <div>
+    <label><input type="checkbox" id="terms" name="terms"> I agree to the Terms and Conditions</label>
+  </div>
+  <div>
+    <!-- Eightfold-style acknowledgment: the box itself only says "Yes". -->
+    <legend id="ack_legend">By checking this, you agree to the candidate code of conduct.</legend>
+    <div id="ack" aria-labelledby="ack_legend">
+      <input type="checkbox" id="ack-0" name="ack" aria-label="Yes"><label for="ack-0">Yes</label>
+    </div>
+  </div>
+  <div>
+    <label for="gender">Gender</label>
+    <select id="gender" name="gender">
+      <option value="">Please select</option>
+      <option value="male">Male</option>
+      <option value="female">Female</option>
+    </select>
+  </div>
+  <fieldset id="emergency">
+    <legend>Emergency Contact</legend>
+    <label for="ecname">Name</label>
+    <input type="text" id="ecname" name="ecname">
+  </fieldset>
+  <!-- A bare "I agree" box under a neutral legend: still consent, never ticked. -->
+  <fieldset id="extra-info">
+    <legend>Additional information</legend>
+    <label><input type="checkbox" id="agree-bare" name="agree-bare"> I agree</label>
+  </fieldset>
+</form>
+</body>
+</html>

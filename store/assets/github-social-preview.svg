@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="640" viewBox="0 0 1280 640">
+  <title>Formhand social preview</title>
+  <defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1E2A78"/><stop offset="1" stop-color="#3B4FD8"/></linearGradient></defs>
+  <rect width="1280" height="640" fill="url(#bg)"/>
+  <g transform="translate(110 160) scale(2.5)">
+  <rect width="128" height="128" rx="28" fill="#3B4FD8"/>
+  <!-- three form fields: two filled (white), one still waiting (dashed outline) -->
+  <rect x="22" y="22" width="84" height="20" rx="10" fill="#FFFFFF"/>
+  <rect x="22" y="54" width="60" height="20" rx="10" fill="#FFFFFF"/>
+  <rect x="24" y="86" width="80" height="18" rx="9" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-dasharray="9 7" opacity=".85"/>
+  <!-- green "filled" tick badge -->
+  <circle cx="94" cy="64" r="22" fill="#22B573" stroke="#3B4FD8" stroke-width="6"/>
+  <path d="M83 64.5l8 8 14-16" fill="none" stroke="#FFFFFF" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+  <text x="480" y="300" font-family="Liberation Sans, DejaVu Sans, sans-serif" font-weight="700" font-size="120" fill="#FFFFFF">Formhand</text>
+  <text x="484" y="372" font-family="Liberation Sans, DejaVu Sans, sans-serif" font-size="42" fill="#DDE3FF">Job application autofill for Firefox</text>
+  <text x="484" y="440" font-family="Liberation Sans, DejaVu Sans, sans-serif" font-size="32" fill="#B9C4FF">100% local. No account. Never presses Submit.</text>
+</svg>
