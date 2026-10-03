@@ -1,0 +1,80 @@
+<!doctype html>
+<!--
+  Workday "Voluntary Disclosures" step, hand-written to the REAL markup of the captures in
+  fixtures/workday/ (one tenant, 2026-10-02): fkit formFields,
+  button dropdowns with a phantom input, multiselect prompts, abbr required marks,
+  the footer OUTSIDE the page container (Next has NO type attribute). No personal data.
+  Widgets come alive via workday.js.
+-->
+<html lang="en">
+<head><meta charset="utf-8"><title>Workday-style Voluntary Disclosures (synthetic)</title></head>
+<body>
+<header>
+  <a data-automation-id="logoLink" href="https://example.invalid/jobs"><img alt=" careers home" data-automation-id="logo"></a>
+  <h1 data-automation-id="headerTitle">Careers</h1>
+  <div data-automation-id="utilityButtonBar">
+    <button id="settingsSelectorButton" data-automation-id="utilityMenuButton" aria-haspopup="listbox" aria-expanded="false" type="button">English</button>
+    <button id="accountSettingsButton" data-automation-id="utilityMenuButton" aria-haspopup="true" type="button">Account</button>
+  </div>
+</header>
+<div id="root"><div id="mainContent" data-mfe-id="applyFlow"><main>
+<div data-automation-id="applyFlowPage">
+  <div><button data-automation-id="backToJobPosting" type="button" role="link">Back to Job Posting</button></div>
+  <h2 data-automation-id="jobTitleHeading">Software Engineer</h2>
+  <div aria-label="Application Progress"><ol data-automation-id="progressBar">
+      <li data-automation-id="progressBarCompletedStep"><div><span></span></div><label aria-live="polite">completed step 1 of 5</label><label>My Information</label></li>
+      <li data-automation-id="progressBarCompletedStep"><div><span></span></div><label aria-live="polite">completed step 2 of 5</label><label>My Experience</label></li>
+      <li data-automation-id="progressBarCompletedStep"><div><span></span></div><label aria-live="polite">completed step 3 of 5</label><label>Application Questions</label></li>
+      <li data-automation-id="progressBarActiveStep"><div><span></span></div><label aria-live="polite">current step 4 of 5</label><label>Voluntary Disclosures</label></li>
+      <li data-automation-id="progressBarInactiveStep"><div><span></span></div><label aria-live="polite">step 5 of 5</label><label>Review</label></li>
+    </ol></div>
+  <div>
+    <h3 tabindex="-1">Voluntary Disclosures</h3>
+    <div>* Indicates a required field</div>
+    <div data-automation-id="applyFlowVoluntaryDisclosuresPage">
+
+    <div role="group" aria-labelledby="Self-Identification-Questions-section">
+      <h4 id="Self-Identification-Questions-section">Self Identification Questions</h4>
+      <div data-automation-id="instructionalText"><p>Acme is an equal opportunity employer. Your answers will have no bearing upon consideration of your resume.</p></div>
+      <div data-automation-id="formField-gender" data-fkit-id="personalInfoUS--gender">
+        <label for="personalInfoUS--gender"><span>What is your Gender?</span></label>
+        <div><div><button aria-haspopup="listbox" type="button" value="" aria-label="What is your Gender? Select One" name="gender" id="personalInfoUS--gender" data-options="Male|Female|Decline to Self Identify" >Select One</button><input type="text" value=""><span class="menu-icon"><svg width="12" height="12"></svg></span></div><div></div></div>
+      </div>
+      <div data-automation-id="formField-ethnicityMulti">
+        <fieldset><legend><label id="label20"><span>What is your Ethnicity (select all that apply)?</span></label></legend>
+        <div><div>
+          <fieldset data-automation-id="ethnicityMulti-CheckboxGroup" id="personalInfoUS--ethnicityMulti" aria-required="false"><div role="grid" aria-readonly="true">
+            <div role="row"><div role="cell"><input type="checkbox" id="b81c0-ethnicityMulti" aria-checked="false" aria-required="false"><label for="b81c0-ethnicityMulti">American Indian or Alaska Native (United States of America)</label></div></div>
+            <div role="row"><div role="cell"><input type="checkbox" id="b81c1-ethnicityMulti" aria-checked="false" aria-required="false"><label for="b81c1-ethnicityMulti">Asian (United States of America)</label></div></div>
+            <div role="row"><div role="cell"><input type="checkbox" id="b81c2-ethnicityMulti" aria-checked="false" aria-required="false"><label for="b81c2-ethnicityMulti">Black or African American (United States of America)</label></div></div>
+            <div role="row"><div role="cell"><input type="checkbox" id="b81c3-ethnicityMulti" aria-checked="false" aria-required="false"><label for="b81c3-ethnicityMulti">Hispanic or Latino (United States of America)</label></div></div>
+            <div role="row"><div role="cell"><input type="checkbox" id="b81c4-ethnicityMulti" aria-checked="false" aria-required="false"><label for="b81c4-ethnicityMulti">Native Hawaiian or Other Pacific Islander (United States of America)</label></div></div>
+            <div role="row"><div role="cell"><input type="checkbox" id="b81c5-ethnicityMulti" aria-checked="false" aria-required="false"><label for="b81c5-ethnicityMulti">Two or More Races (United States of America)</label></div></div>
+            <div role="row"><div role="cell"><input type="checkbox" id="b81c6-ethnicityMulti" aria-checked="false" aria-required="false"><label for="b81c6-ethnicityMulti">White (United States of America)</label></div></div>
+          </div></fieldset>
+        </div></div></fieldset>
+      </div>
+      <div data-automation-id="formField-veteranStatus" data-fkit-id="personalInfoUS--veteranStatus">
+        <label for="personalInfoUS--veteranStatus"><span>What is your Veteran Status?</span></label>
+        <div><div><button aria-haspopup="listbox" type="button" value="" aria-label="What is your Veteran Status? Select One" name="veteranStatus" id="personalInfoUS--veteranStatus" data-options="I am not a protected veteran|I identify as one or more of the classifications of protected veteran|I do not wish to self-identify" >Select One</button><input type="text" value=""><span class="menu-icon"><svg width="12" height="12"></svg></span></div><div></div></div>
+      </div>
+    </div>
+    <div role="group" aria-labelledby="Terms-and-Conditions-section">
+      <h4 id="Terms-and-Conditions-section">Terms and Conditions</h4>
+      <div data-automation-id="instructionalText"><p>By clicking the check box below: I acknowledge the Site Privacy Policy and Terms and Conditions. I certify that all of the information provided by me in this application is truthful.</p></div>
+      <div data-automation-id="formField-acceptTermsAndAgreements" data-fkit-id="termsAndConditions--acceptTermsAndAgreements">
+        <label for="termsAndConditions--acceptTermsAndAgreements"><span>Yes, I have read and consent to the terms and conditions<abbr aria-hidden="true">*</abbr></span></label>
+        <div><div><input id="termsAndConditions--acceptTermsAndAgreements" name="acceptTermsAndAgreements" type="checkbox" aria-checked="false" aria-required="true" ></div><div></div></div>
+      </div>
+    </div>
+    </div>
+  </div>
+  <div data-automation-id="pageFooter">
+    <button data-automation-id="pageFooterBackButton">Back</button>
+    <button data-automation-id="pageFooterNextButton">Save and Continue</button>
+  </div>
+</div>
+</main></div></div>
+<script src="workday.js"></script>
+</body>
+</html>

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128" role="img" aria-label="Formhand logo">
+  <title>Formhand</title>
+  <rect width="128" height="128" rx="28" fill="#3B4FD8"/>
+  <!-- three form fields: two filled (white), one still waiting (dashed outline) -->
+  <rect x="22" y="22" width="84" height="20" rx="10" fill="#FFFFFF"/>
+  <rect x="22" y="54" width="60" height="20" rx="10" fill="#FFFFFF"/>
+  <rect x="24" y="86" width="80" height="18" rx="9" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-dasharray="9 7" opacity=".85"/>
+  <!-- green "filled" tick badge -->
+  <circle cx="94" cy="64" r="22" fill="#22B573" stroke="#3B4FD8" stroke-width="6"/>
+  <path d="M83 64.5l8 8 14-16" fill="none" stroke="#FFFFFF" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

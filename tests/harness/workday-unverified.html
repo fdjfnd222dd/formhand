@@ -1,0 +1,80 @@
+<!doctype html>
+<!--
+  Workday "Application Questions" step, hand-written to the REAL markup of the captures in
+  fixtures/workday/ (one tenant, 2026-10-02): fkit formFields,
+  button dropdowns with a phantom input, multiselect prompts, abbr required marks,
+  the footer OUTSIDE the page container (Next has NO type attribute). No personal data.
+  Widgets come alive via workday.js.
+  NOT seen on the captured tenant: MM/DD/YYYY sections, a masked MM/YYYY text input; plus a dropdown whose picks never stick and one whose popup never opens.
+-->
+<html lang="en">
+<head><meta charset="utf-8"><title>Workday-style Unverified variants (synthetic)</title></head>
+<body>
+<header>
+  <a data-automation-id="logoLink" href="https://example.invalid/jobs"><img alt=" careers home" data-automation-id="logo"></a>
+  <h1 data-automation-id="headerTitle">Careers</h1>
+  <div data-automation-id="utilityButtonBar">
+    <button id="settingsSelectorButton" data-automation-id="utilityMenuButton" aria-haspopup="listbox" aria-expanded="false" type="button">English</button>
+    <button id="accountSettingsButton" data-automation-id="utilityMenuButton" aria-haspopup="true" type="button">Account</button>
+  </div>
+</header>
+<div id="root"><div id="mainContent" data-mfe-id="applyFlow"><main>
+<div data-automation-id="applyFlowPage">
+  <div><button data-automation-id="backToJobPosting" type="button" role="link">Back to Job Posting</button></div>
+  <h2 data-automation-id="jobTitleHeading">Software Engineer</h2>
+  <div aria-label="Application Progress"><ol data-automation-id="progressBar">
+      <li data-automation-id="progressBarCompletedStep"><div><span></span></div><label aria-live="polite">completed step 1 of 5</label><label>My Information</label></li>
+      <li data-automation-id="progressBarCompletedStep"><div><span></span></div><label aria-live="polite">completed step 2 of 5</label><label>My Experience</label></li>
+      <li data-automation-id="progressBarActiveStep"><div><span></span></div><label aria-live="polite">current step 3 of 5</label><label>Application Questions</label></li>
+      <li data-automation-id="progressBarInactiveStep"><div><span></span></div><label aria-live="polite">step 4 of 5</label><label>Voluntary Disclosures</label></li>
+      <li data-automation-id="progressBarInactiveStep"><div><span></span></div><label aria-live="polite">step 5 of 5</label><label>Review</label></li>
+    </ol></div>
+  <div>
+    <h3 tabindex="-1">Application Questions</h3>
+    <div>* Indicates a required field</div>
+    <div data-automation-id="applyFlowPrimaryQuestionsPage">
+
+    <div data-automation-id="formField-gradDate">
+      <fieldset><legend><label id="label900"><span>Expected Graduation Date<abbr aria-hidden="true">*</abbr></span></label></legend>
+      <div><div>
+        <div data-automation-id="dateInputWrapper" role="group">
+          <input id="grad-mm" role="spinbutton" aria-label="Month" data-automation-id="dateSectionMonth-input" value="">
+          <input id="grad-yyyy" role="spinbutton" aria-label="Year" data-automation-id="dateSectionYear-input" value="">
+        </div>
+      </div></div></fieldset>
+    </div>
+    <div data-automation-id="formField-completion">
+      <fieldset><legend><label id="label901"><span>Degree Completion Date</span></label></legend>
+      <div><div>
+        <div data-automation-id="dateInputWrapper" role="group">
+          <input id="done-mm" role="spinbutton" aria-label="Month" data-automation-id="dateSectionMonth-input" value="">
+          <input id="done-dd" role="spinbutton" aria-label="Day" data-automation-id="dateSectionDay-input" value="">
+          <input id="done-yyyy" role="spinbutton" aria-label="Year" data-automation-id="dateSectionYear-input" value="">
+        </div>
+      </div></div></fieldset>
+    </div>
+    <div data-automation-id="formField-gradMasked">
+      <label for="grad-masked"><span>Graduation date</span></label>
+      <div><div><input id="grad-masked" type="text" placeholder="MM/YYYY" value=""></div></div>
+    </div>
+
+      <div data-automation-id="formField-flakyState" data-fkit-id="flaky">
+        <label for="flaky"><span>State</span></label>
+        <div><div><button aria-haspopup="listbox" type="button" value="" aria-label="State Select One" name="flaky" id="flaky" data-options="California|Virginia" data-flaky="5">Select One</button><input type="text" value=""><span class="menu-icon"><svg width="12" height="12"></svg></span></div><div></div></div>
+      </div>
+
+      <div data-automation-id="formField-deadCountry" data-fkit-id="dead">
+        <label for="dead"><span>Country</span></label>
+        <div><div><button aria-haspopup="listbox" type="button" value="" aria-label="Country Select One" name="dead" id="dead" data-options="United States of America" data-never="1">Select One</button><input type="text" value=""><span class="menu-icon"><svg width="12" height="12"></svg></span></div><div></div></div>
+      </div>
+    </div>
+  </div>
+  <div data-automation-id="pageFooter">
+    <button data-automation-id="pageFooterBackButton">Back</button>
+    <button data-automation-id="pageFooterNextButton">Save and Continue</button>
+  </div>
+</div>
+</main></div></div>
+<script src="workday.js"></script>
+</body>
+</html>

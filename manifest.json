@@ -1,0 +1,61 @@
+{
+  "manifest_version": 3,
+  "name": "Formhand - Job Application Autofill",
+  "version": "1.0.0",
+  "description": "Fills job application forms from profiles and answers stored only in your browser. Runs only when you press Alt+Z or use the toolbar button. Never submits. No network access.",
+  "author": "fdjfnd222dd",
+  "homepage_url": "https://github.com/fdjfnd222dd/formhand",
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "formhand@fdjfnd222dd",
+      "strict_min_version": "142.0",
+      "data_collection_permissions": {
+        "required": [
+          "none"
+        ]
+      }
+    }
+  },
+  "permissions": [
+    "storage",
+    "activeTab",
+    "scripting"
+  ],
+  "host_permissions": [
+    "https://job-boards.greenhouse.io/*",
+    "https://boards.greenhouse.io/*",
+    "https://jobs.lever.co/*",
+    "https://jobs.ashbyhq.com/*"
+  ],
+  "background": {
+    "scripts": [
+      "background.js"
+    ]
+  },
+  "action": {
+    "default_title": "Formhand: pick a profile, fill this page (Alt+Z)",
+    "default_popup": "popup/popup.html",
+    "default_icon": {
+      "16": "icons/icon-16.png",
+      "32": "icons/icon-32.png",
+      "48": "icons/icon-48.png"
+    }
+  },
+  "commands": {
+    "fill-page": {
+      "suggested_key": {
+        "default": "Alt+Z"
+      },
+      "description": "Fill the current page"
+    }
+  },
+  "options_ui": {
+    "page": "options/options.html",
+    "open_in_tab": true
+  },
+  "icons": {
+    "48": "icons/icon-48.png",
+    "96": "icons/icon-96.png",
+    "128": "icons/icon-128.png"
+  }
+}

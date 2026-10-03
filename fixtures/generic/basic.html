@@ -1,0 +1,169 @@
+<!doctype html>
+<!--
+  Handwritten Phase 1 fixture. Each tricky case is labelled in a comment.
+  tests/fixtures.test.js asserts the expected outcome for every field by id.
+  No external resources: the page must work offline.
+-->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Basic application (fixture)</title>
+  <style>
+    body { font: 15px/1.4 sans-serif; max-width: 720px; margin: 24px auto; }
+    label, .row { display: block; margin: 8px 0; }
+    .hidden { display: none; }
+  </style>
+</head>
+<body>
+<h1>Apply: Software Engineer Intern</h1>
+
+<form id="app" action="#" onsubmit="return false">
+  <h3>Personal information</h3>
+
+  <!-- Case: label[for]. Legal vs preferred first name. -->
+  <label for="legal-first">Legal First Name *</label>
+  <input id="legal-first" name="q1" required>
+
+  <label for="middle">Middle Name</label>
+  <input id="middle" name="q2">
+
+  <label for="legal-last">Legal Last Name *</label>
+  <input id="legal-last" name="q3" required>
+
+  <!-- Case: aria-labelledby. Preferred first name must beat generic first name. -->
+  <div class="row">
+    <span id="pref-label">Preferred First Name</span>
+    <input id="preferred" name="q4" aria-labelledby="pref-label">
+  </div>
+
+  <!-- Case: wrapping label. -->
+  <label>Email Address <input id="email" type="email" name="q5"></label>
+
+  <!-- Case: already has a value. Must never be overwritten. -->
+  <label>Confirm Email <input id="email-confirm" type="email" value="typed-by-hand@example.com"></label>
+
+  <!-- Case: React-style controlled input (see script at bottom). aria-label only. -->
+  <input id="phone" type="tel" aria-label="Phone Number">
+
+  <!-- Case: phone extension must not get the phone number. -->
+  <label for="phone-ext">Phone Extension</label>
+  <input id="phone-ext">
+
+  <h3>Address</h3>
+  <!-- Case: no label at all, only a Workday-style data-automation-id (camelCase + digit). -->
+  <div data-automation-id="addressSection_addressLine1"><input id="addr1"></div>
+  <div data-automation-id="addressSection_addressLine2"><input id="addr2"></div>
+
+  <!-- Case: nearby text in a sibling span, no label element. -->
+  <div class="row"><span>City</span> <input id="city"></div>
+
+  <!-- Case: native select with full names while profile stores "CA". -->
+  <label for="state">State</label>
+  <select id="state">
+    <option value="">Please select</option>
+    <option value="AZ">Arizona</option>
+    <option value="CA">California</option>
+    <option value="NY">New York</option>
+  </select>
+
+  <!-- Case: placeholder only. -->
+  <div class="row"><input id="zip" placeholder="ZIP Code"></div>
+
+  <label for="country">Country</label>
+  <select id="country">
+    <option value="">-- Select --</option>
+    <option>Canada</option>
+    <option>United States of America</option>
+  </select>
+
+  <fieldset>
+    <!-- Case: emergency contact section. NOTHING here may be filled. -->
+    <legend>Emergency Contact</legend>
+    <label for="ec-name">Name *</label><input id="ec-name" required>
+    <label for="ec-phone">Phone</label><input id="ec-phone" type="tel">
+    <label for="ec-email">Email</label><input id="ec-email" type="email">
+    <label for="ec-rel">Relationship</label><input id="ec-rel">
+  </fieldset>
+
+  <!-- Case: emergency wording in the label itself, outside any section. -->
+  <label for="ec-first">Emergency Contact First Name</label>
+  <input id="ec-first" autocomplete="given-name" required>
+
+  <h3>Links</h3>
+  <label for="linkedin">LinkedIn Profile URL</label><input id="linkedin" type="url">
+  <label for="github">GitHub</label><input id="github" type="url">
+  <label for="website">Personal Website</label><input id="website" type="url">
+
+  <h3>Education</h3>
+  <label for="school">School or University *</label><input id="school" required>
+  <label for="degree">Degree</label>
+  <select id="degree">
+    <option value="">Select...</option>
+    <option>High School Diploma</option>
+    <option>Associate's Degree</option>
+    <option>Bachelor's Degree</option>
+    <option>Master's Degree</option>
+  </select>
+  <label for="major">Major / Field of Study</label><input id="major">
+  <label for="minor">Minor</label><input id="minor">
+  <label for="grad-month">Expected Graduation Month</label>
+  <select id="grad-month">
+    <option value="">Month</option>
+    <option value="01">January</option><option value="05">May</option><option value="12">December</option>
+  </select>
+  <label for="grad-year">Expected Graduation Year</label><input id="grad-year">
+  <label for="gpa">Cumulative GPA</label><input id="gpa">
+
+  <h3>Other</h3>
+  <!-- Case: required with no profile answer -> yellow. -->
+  <label for="salary">Desired salary *</label><input id="salary" required>
+  <!-- Case: mentions "United States" — must not be treated as State. Required -> yellow. -->
+  <label for="auth">Are you legally authorized to work in the United States? *</label>
+  <select id="auth" required>
+    <option value="">Select...</option><option>Yes</option><option>No</option>
+  </select>
+  <!-- Case: optional unknown -> no outline. -->
+  <label for="hear">How did you hear about us?</label><input id="hear">
+
+  <!-- Case: hidden and disabled fields are never touched. -->
+  <input id="hidden-first" type="hidden" name="first_name">
+  <div class="hidden"><label for="invisible-email">Email</label><input id="invisible-email"></div>
+  <label for="disabled-city">City</label><input id="disabled-city" disabled>
+
+  <!-- The filler must never click these. -->
+  <button type="button" id="next" onclick="window.__clicked = 'next'">Next</button>
+  <button type="submit" id="submit" onclick="window.__clicked = 'submit'">Submit</button>
+</form>
+
+<script>
+  /*
+   * Minimal imitation of React's controlled-input value tracking, so the test
+   * needs no React download. React patches the element's own `value` setter to
+   * remember the last value it saw, and its onChange handler ignores input
+   * events whose DOM value equals that remembered value. Then re-rendering
+   * writes the component state back into the DOM.
+   *
+   * So `el.value = x` (own setter) is silently reverted, while the native
+   * prototype setter + an input event is accepted, exactly like real React.
+   */
+  (function () {
+    const el = document.getElementById('phone');
+    const proto = Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, 'value');
+    let tracked = '';
+    let state = '';
+    Object.defineProperty(el, 'value', {
+      configurable: true,
+      get() { return proto.get.call(this); },
+      set(v) { tracked = String(v); proto.set.call(this, v); },
+    });
+    function render() { proto.set.call(el, state); tracked = state; }
+    el.addEventListener('input', () => {
+      const domValue = proto.get.call(el);
+      if (domValue !== tracked) state = domValue; // React: "value changed" -> setState
+      setTimeout(render, 0);                      // re-render from state
+    });
+    window.__reactState = () => state;
+  })();
+</script>
+</body>
+</html>

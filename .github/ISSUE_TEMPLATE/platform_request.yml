@@ -1,0 +1,27 @@
+name: Platform or wording request
+description: Ask for support for another application platform, or a question wording that is not recognised.
+labels: [enhancement]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Dedicated support is built only from real page structure. Please do not attach a saved page. If you can, create a
+        **structure-only copy** (`node tools/strip-fixture.js`) and tell us you have it; a maintainer will say how to share it safely.
+  - type: input
+    id: platform
+    attributes:
+      label: Platform (e.g. Lever, Ashby, iCIMS, SmartRecruiters) or question wording
+    validations:
+      required: true
+  - type: textarea
+    id: details
+    attributes:
+      label: What is missing?
+      description: "For a wording: the exact label text, and the options listed, if it is a dropdown."
+  - type: checkboxes
+    id: privacy
+    attributes:
+      label: Privacy check
+      options:
+        - label: This request contains no personal information.
+          required: true

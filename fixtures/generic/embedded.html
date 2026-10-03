@@ -1,0 +1,59 @@
+<!doctype html>
+<!--
+  Handwritten fixture: a company careers page with one application form from an
+  unknown ATS domain in an iframe, plus the frames that must never be opened or
+  touched (video, ad, chat widget, captcha, analytics, a hidden "apply" frame).
+  Tests run offline, so no frame actually loads: core/embed.js judges the
+  <iframe> elements only. tests/embed.test.js asserts the survey.
+-->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Careers at Acme | Software Engineer</title>
+  <style>
+    body { font: 15px/1.4 sans-serif; max-width: 900px; margin: 24px auto; }
+    iframe { display: block; margin: 12px 0; border: 1px solid #ccc; }
+    .chat { position: fixed; right: 8px; bottom: 8px; }
+  </style>
+</head>
+<body>
+<h1>Software Engineer</h1>
+<p>Join Acme. Apply below.</p>
+
+<!-- Newsletter box on the page itself (not inside any frame). -->
+<form id="newsletter" action="#" onsubmit="return false">
+  <label for="nl-email">Get job alerts by email</label>
+  <input id="nl-email" type="email">
+</form>
+
+<!-- A promo video: never a form, even with "careers" in its title. -->
+<iframe id="video" title="Life at Acme careers video" width="640" height="360"
+  src="https://www.youtube-nocookie.com/embed/abc123"></iframe>
+
+<!-- The application, from an ATS domain we have no permission for: opened in its own tab. -->
+<iframe id="ats" title="Job application" width="800" height="1800"
+  src="https://apply.acme-hr.example/jobs/42/apply?source=careers"></iframe>
+
+<!-- An ad. -->
+<iframe id="ad" width="300" height="250" src="https://googleads.g.doubleclick.net/pagead/ads?job=1"></iframe>
+
+<!-- reCAPTCHA (big enough, but a captcha). -->
+<iframe id="captcha" title="reCAPTCHA" width="304" height="478" src="https://www.recaptcha.net/recaptcha/api2/bframe?k=x"></iframe>
+
+<!-- Chat widget. -->
+<iframe id="chat" class="chat" title="Chat with our recruiting team" width="370" height="520"
+  src="https://widget.intercom.io/widget/abc"></iframe>
+
+<!-- Analytics pixel frame. -->
+<iframe id="gtm" width="0" height="0" style="display:none" src="https://www.googletagmanager.com/ns.html?id=GTM-X"></iframe>
+
+<!-- A frame that says "apply" but is invisible: never opened. -->
+<iframe id="hidden-apply" width="800" height="600" style="visibility:hidden" src="https://apply.other-ats.example/apply/7"></iframe>
+
+<!-- A map of the office: not a form. -->
+<iframe id="map" width="600" height="300" src="https://www.google.com/maps/embed?pb=careers"></iframe>
+
+<!-- An unrelated embed with no form words. -->
+<iframe id="widget" width="600" height="300" src="https://widgets.example-weather.test/forecast?city=sd"></iframe>
+</body>
+</html>

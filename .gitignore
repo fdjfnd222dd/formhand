@@ -1,0 +1,17 @@
+node_modules/
+web-ext-artifacts/
+
+# Saved application pages contain real personal data. Only the handwritten
+# generic fixtures (and test-only harness pages) are committed.
+fixtures/*
+!fixtures/generic/
+# Resume and profile seed (personal data, Phase 3 input).
+seed/
+
+# Release hygiene (added for publication)
+*.pdf
+*.docx
+.env*
+*.pem
+*.xpi
+*.zip

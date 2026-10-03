@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Formhand: Settings</title>
+  <link rel="stylesheet" href="options.css">
+</head>
+<body>
+  <h1>Formhand</h1>
+  <p class="note">Stored only in this browser (browser.storage.local). Nothing is sent anywhere.</p>
+
+  <!-- Sticky bar: section links, plus the status line so feedback stays visible while scrolled. -->
+  <header class="topbar">
+    <nav aria-label="Sections">
+      <a href="#profiles-section">Profiles</a>
+      <a href="#standard-section">Standard answers</a>
+      <a href="#qa-section">Q&amp;A bank</a>
+      <a href="#export-section">Export / import</a>
+      <a href="#delete-section">Delete data</a>
+    </nav>
+    <p id="status" role="status"></p>
+  </header>
+
+  <!-- 1. Which profile is edited, and which one fills pages. -->
+  <section id="profiles-section">
+    <h2>Profiles</h2>
+    <p class="note">Keep one profile per variant, e.g. "Home address" and "Campus address". The profile you edit here is not
+      necessarily the one used for filling.</p>
+    <div class="row">
+      <label class="inline">Editing
+        <select id="profile-select"></select>
+      </label>
+      <span id="active-marker" class="badge"></span>
+      <button type="button" id="use-profile">Use for filling</button>
+    </div>
+    <div class="row">
+      <button type="button" id="profile-new">New</button>
+      <button type="button" id="profile-duplicate">Duplicate</button>
+      <button type="button" id="profile-rename">Rename</button>
+      <button type="button" id="profile-delete">Delete</button>
+    </div>
+  </section>
+
+  <!-- 2. The profile form (inputs are built by options.js from FIELDS). -->
+  <section id="profile-details-section">
+    <h2>Profile details</h2>
+    <p id="profile-notice" class="notice" hidden></p>
+    <form id="profile-form" autocomplete="off"></form>
+    <p><button type="submit" form="profile-form">Save</button></p>
+  </section>
+
+  <!-- 3. Standard answers (shared by every profile). -->
+  <section id="standard-section">
+    <h2>Standard answers</h2>
+    <p class="note">These questions repeat on most applications with different wording. They are recognised across
+      wording variants and filled only when an option clearly matches. Blank means never filled.</p>
+    <form id="standard-form"></form>
+    <p><button type="submit" form="standard-form">Save standard answers</button></p>
+  </section>
+
+  <!-- 4. Q&A bank. -->
+  <section id="qa-section">
+    <h2>Q&amp;A bank</h2>
+    <label class="check"><input type="checkbox" id="learn-mode"> Learn mode</label>
+    <p class="note">Learning starts on a page after you press Alt+Z there once (or use the toolbar Fill button);
+      answers you then type/pick yourself are saved.</p>
+    <div class="row qa-tools">
+      <input type="search" id="qa-search" placeholder="Search question, answer, aliases" aria-label="Search Q&amp;A">
+      <label class="inline">Sensitivity
+        <select id="qa-filter"></select>
+      </label>
+      <label class="inline">Sort
+        <select id="qa-sort">
+          <option value="recent">Recently updated first</option>
+          <option value="question">Question A–Z</option>
+        </select>
+      </label>
+      <span id="qa-count" class="count" role="status" aria-live="polite"></span>
+    </div>
+    <p id="qa-empty" class="note" hidden></p>
+    <table id="qa-table">
+      <colgroup>
+        <col class="c-q"><col class="c-aliases"><col class="c-answer"><col class="c-sensitive"><col class="c-date"><col class="c-actions">
+      </colgroup>
+      <thead>
+        <tr><th>Question</th><th>Aliases (comma separated)</th><th>Answer</th><th>Sensitive</th><th>Updated</th><th><span class="sr-only">Actions</span></th></tr>
+      </thead>
+      <tbody id="qa-body"></tbody>
+      <tfoot>
+        <tr id="qa-add">
+          <td><input type="text" class="add-question" placeholder="New question" aria-label="New question"></td>
+          <td><input type="text" class="add-aliases" aria-label="New aliases"></td>
+          <td><input type="text" class="add-answer" placeholder="Answer" aria-label="New answer"></td>
+          <td><select class="add-sensitive" aria-label="New sensitivity"></select></td>
+          <td></td>
+          <td><button type="button" id="qa-add-btn">Add entry</button></td>
+        </tr>
+      </tfoot>
+    </table>
+
+    <!-- {company} migration: entries learned before the placeholder existed. -->
+    <div id="company-section">
+      <h3>Company names in saved questions</h3>
+      <p class="note">Questions and answers are saved with <code>{company}</code> in place of the hiring company
+        ("Have you ever worked at {company} before?"), so one entry covers every company and the answer is filled
+        with the current company's name. Entries saved earlier may still name a company: convert them here.</p>
+      <p class="row">
+        <label class="inline">Company names
+          <input type="text" id="company-names" size="48" placeholder="e.g. Acme, Example Corp, Globex Industries"
+            aria-label="Company names, comma separated"></label>
+        <button type="button" id="company-scan">Find entries</button>
+        <button type="button" id="company-convert-all" hidden>Convert all</button>
+      </p>
+      <p id="company-summary" class="notice" hidden></p>
+      <ul id="company-matches"></ul>
+    </div>
+  </section>
+
+  <!-- 5. Export / import. -->
+  <section id="export-section">
+    <h2>Export / import</h2>
+    <p class="note">Import merges: matching profile names and questions are updated, new ones are added, and nothing
+      already stored is ever deleted.</p>
+    <p id="export-warning" class="notice"><strong>The export file holds your personal data in plain text.</strong>
+      Everything in your profiles, standard answers and Q&amp;A bank (name, contact details, address, answers) is in it,
+      unencrypted and readable by anyone or any program that can open the file. Keep it somewhere private and delete
+      copies you no longer need.</p>
+    <p>
+      <button type="button" id="export-btn" aria-describedby="export-warning">Export…</button>
+      <label class="inline">Import <input type="file" id="import-file" accept=".json,application/json"></label>
+    </p>
+  </section>
+
+  <!-- 6. Delete everything Formhand stored in this browser. -->
+  <section id="delete-section">
+    <h2>Delete all my data</h2>
+    <p class="note" id="delete-note">Removes every profile, your standard answers, the whole Q&amp;A bank and all settings
+      (learn mode, remembered company names) from this browser. Formhand then starts as after a fresh install: one empty profile, and only the four default "No"
+      standard answers (previously employed, client, relatives, referred).
+      This cannot be undone: export first if you may want the data back. Files you exported earlier are not touched.</p>
+    <p><button type="button" id="delete-all" class="danger" aria-describedby="delete-note">Delete all my data…</button></p>
+  </section>
+
+  <script src="../core/matcher.js"></script>
+  <script src="../core/standard.js"></script>
+  <script src="../core/qa.js"></script>
+  <script src="../core/company.js"></script>
+  <script src="../core/storage.js"></script>
+  <script src="options.js"></script>
+</body>
+</html>

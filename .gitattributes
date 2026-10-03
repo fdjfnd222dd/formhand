@@ -1,0 +1,6 @@
+* text=auto eol=lf
+*.png binary
+*.svg text
+# Keep language stats honest: the saved-page fixtures and harness markup are test data.
+tests/harness/*.html linguist-vendored
+fixtures/** linguist-vendored

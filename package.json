@@ -1,0 +1,23 @@
+{
+  "name": "formhand",
+  "version": "1.0.0",
+  "private": true,
+  "license": "MIT",
+  "author": "fdjfnd222dd",
+  "homepage": "https://github.com/fdjfnd222dd/formhand",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fdjfnd222dd/formhand.git"
+  },
+  "description": "Local-only Firefox extension that autofills job application forms. Never submits.",
+  "scripts": {
+    "test": "node --test --test-concurrency=1 'tests/**/*.test.js'",
+    "lint": "web-ext lint",
+    "build": "web-ext build --overwrite-dest",
+    "sign": "node tools/sign.js",
+    "start": "web-ext run --firefox-profile \"$HOME/.autofill-dev-profile\" --profile-create-if-missing --keep-profile-changes --start-url \"file://$PWD/fixtures/generic/basic.html\""
+  },
+  "devDependencies": {
+    "playwright": "^1.63.0"
+  }
+}

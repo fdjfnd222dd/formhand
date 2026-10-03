@@ -1,0 +1,53 @@
+<!doctype html>
+<!--
+  Workday "Review" step, hand-written to the REAL markup of the captures in
+  fixtures/workday/ (one tenant, 2026-10-02): fkit formFields,
+  button dropdowns with a phantom input, multiselect prompts, abbr required marks,
+  the footer OUTSIDE the page container (Next has NO type attribute). No personal data.
+  Widgets come alive via workday.js.
+  Read-only echoes: zero controls.
+-->
+<html lang="en">
+<head><meta charset="utf-8"><title>Workday-style Review (synthetic)</title></head>
+<body>
+<header>
+  <a data-automation-id="logoLink" href="https://example.invalid/jobs"><img alt=" careers home" data-automation-id="logo"></a>
+  <h1 data-automation-id="headerTitle">Careers</h1>
+  <div data-automation-id="utilityButtonBar">
+    <button id="settingsSelectorButton" data-automation-id="utilityMenuButton" aria-haspopup="listbox" aria-expanded="false" type="button">English</button>
+    <button id="accountSettingsButton" data-automation-id="utilityMenuButton" aria-haspopup="true" type="button">Account</button>
+  </div>
+</header>
+<div id="root"><div id="mainContent" data-mfe-id="applyFlow"><main>
+<div data-automation-id="applyFlowPage">
+  <div><button data-automation-id="backToJobPosting" type="button" role="link">Back to Job Posting</button></div>
+  <h2 data-automation-id="jobTitleHeading">Software Engineer</h2>
+  <div aria-label="Application Progress"><ol data-automation-id="progressBar">
+      <li data-automation-id="progressBarCompletedStep"><div><span></span></div><label aria-live="polite">completed step 1 of 5</label><label>My Information</label></li>
+      <li data-automation-id="progressBarCompletedStep"><div><span></span></div><label aria-live="polite">completed step 2 of 5</label><label>My Experience</label></li>
+      <li data-automation-id="progressBarCompletedStep"><div><span></span></div><label aria-live="polite">completed step 3 of 5</label><label>Application Questions</label></li>
+      <li data-automation-id="progressBarCompletedStep"><div><span></span></div><label aria-live="polite">completed step 4 of 5</label><label>Voluntary Disclosures</label></li>
+      <li data-automation-id="progressBarActiveStep"><div><span></span></div><label aria-live="polite">current step 5 of 5</label><label>Review</label></li>
+    </ol></div>
+  <div>
+    <h3 tabindex="-1">Review</h3>
+    <div>* Indicates a required field</div>
+    <div data-automation-id="applyFlowReviewPage">
+
+    <h3>My Information</h3>
+    <div><label for="candidateIsPreviousWorker">Do you currently work for Acme?</label><span id="candidateIsPreviousWorker">No</span></div>
+    <div><label for="jobTitle">Job Title</label><span id="jobTitle">Engineer</span></div>
+    <div><label for="q37g2e">Email Address</label><span id="q37g2e">alex.rivera@example.com</span></div>
+    <h3>My Experience</h3>
+    <h3>Application Questions</h3>
+    </div>
+  </div>
+  <div data-automation-id="pageFooter">
+    <button data-automation-id="pageFooterBackButton">Back</button>
+    <button data-automation-id="pageFooterNextButton">Submit</button>
+  </div>
+</div>
+</main></div></div>
+<script src="workday.js"></script>
+</body>
+</html>

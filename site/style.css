@@ -1,0 +1,22 @@
+:root { --bg:#fff; --fg:#1b1f2a; --muted:#4b5263; --brand:#3b4fd8; --brand-fg:#fff; --card:#f4f6ff; --line:#d9deef; --ok:#1d7f55; }
+@media (prefers-color-scheme: dark) { :root { --bg:#12141c; --fg:#e8eaf3; --muted:#aab0c4; --brand:#8ea0ff; --brand-fg:#0f1220; --card:#1a1e2c; --line:#2c3350; --ok:#52d0a0; } }
+* { box-sizing: border-box; }
+body { margin:0; background:var(--bg); color:var(--fg); font:17px/1.6 system-ui, -apple-system, "Segoe UI", sans-serif; }
+a { color:var(--brand); }
+a:focus-visible, button:focus-visible { outline:3px solid var(--brand); outline-offset:2px; }
+.skip { position:absolute; left:-999px; } .skip:focus { left:16px; top:8px; background:var(--card); padding:8px; }
+header, main, footer { max-width:880px; margin:0 auto; padding:0 16px; }
+header { padding-top:32px; display:flex; gap:16px; align-items:center; flex-wrap:wrap; }
+header img { border-radius:20px; }
+h1 { font-size:2.2rem; margin:0; line-height:1.15; }
+.tag { margin:.25rem 0 0; color:var(--muted); }
+h2 { margin-top:2.2rem; font-size:1.4rem; }
+.cta { display:inline-block; margin:1rem .5rem 0 0; padding:.7rem 1.1rem; border-radius:10px; background:var(--brand); color:var(--brand-fg); text-decoration:none; font-weight:600; }
+.cta.alt { background:transparent; color:var(--brand); border:2px solid var(--brand); }
+.grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:14px; padding:0; list-style:none; }
+.grid li { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:14px 16px; }
+table { width:100%; border-collapse:collapse; font-size:.95rem; } th,td { text-align:left; padding:8px; border-bottom:1px solid var(--line); vertical-align:top; }
+.swatch { display:inline-block; width:.9em; height:.9em; border-radius:3px; margin-right:.4em; vertical-align:-1px; border:3px solid; }
+.g { border-color:#2e7d32; border-style:solid; } .o { border-color:#ef6c00; border-style:dashed; } .y { border-color:#a67c00; border-style:dotted; }
+footer { padding:2rem 16px 3rem; color:var(--muted); font-size:.9rem; }
+@media (max-width:480px) { h1 { font-size:1.8rem; } }

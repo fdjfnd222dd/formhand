@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Formhand: local job application autofill for Firefox</title>
+  <meta name="description" content="Formhand fills job application forms from profiles and answers stored only in your browser. No account, no tracking, no network access. It never presses Submit.">
+  <meta property="og:title" content="Formhand: local job application autofill for Firefox">
+  <meta property="og:description" content="100% local. No account. Never presses Submit.">
+  <meta property="og:image" content="social.png">
+  <link rel="icon" href="icon.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header>
+    <img src="icon.png" width="96" height="96" alt="">
+    <div>
+      <h1>Formhand</h1>
+      <p class="tag">Job application autofill for Firefox. 100% local. No account. Never presses Submit.</p>
+    </div>
+  </header>
+  <main id="main">
+    <p>
+      <!-- After AMO approval: point this at the add-on's addons.mozilla.org page and say "Add to Firefox". -->
+      <a class="cta" href="https://github.com/fdjfnd222dd/formhand/releases">Download</a>
+      <a class="cta alt" href="https://github.com/fdjfnd222dd/formhand">Source on GitHub</a>
+    </p>
+
+    <h2>Your data stays in your browser</h2>
+    <ul class="grid">
+      <li><strong>No network code.</strong> No analytics, telemetry, accounts or servers. The developer receives and keeps no personal information.</li>
+      <li><strong>No website access until you ask.</strong> No content scripts. It touches only the tab you are on, only after you press Alt+Z. The one extra: host access to four Greenhouse, Lever and Ashby job-board addresses, so an application form they embed in a company page is filled on the same key press.</li>
+      <li><strong>Declares "no data collection"</strong> to Firefox, and says why each permission exists.</li>
+      <li><strong>Yours to delete.</strong> One "Delete all my data" button in Preferences wipes every profile, answer and setting. Exports are plain-text files, and the options page says so next to the button.</li>
+      <li><strong>Small and readable.</strong> Plain JavaScript, no dependencies at runtime, no build step, MIT licensed.</li>
+    </ul>
+
+    <h2>How it works</h2>
+    <ol>
+      <li>Save a profile and the standard answers you are comfortable with. Leave any blank and it is never filled.</li>
+      <li>Open an application and press <kbd>Alt</kbd>+<kbd>Z</kbd> (or use the toolbar button).</li>
+      <li>Read the page and the summary panel: click a count to jump to the next field to check. Fix the orange and yellow fields. Press Next or Submit yourself.</li>
+    </ol>
+    <table>
+      <caption class="tag">What the outlines mean</caption>
+      <tbody>
+        <tr><td><span class="swatch g"></span>Green, solid</td><td>Filled from a confident match</td></tr>
+        <tr><td><span class="swatch o"></span>Orange, dashed</td><td>Filled, please review</td></tr>
+        <tr><td><span class="swatch y"></span>Yellow, dotted</td><td>A required field that needs you</td></tr>
+      </tbody>
+    </table>
+
+    <h2>It never</h2>
+    <ul>
+      <li>presses Next, Continue, Submit, Back, Cancel or links;</li>
+      <li>ticks consent, agreement or signature boxes;</li>
+      <li>fills salary expectations, emergency contacts or references;</li>
+      <li>overwrites something you already typed, or guesses a sensitive answer.</li>
+    </ul>
+
+    <h2>Works with</h2>
+    <p>Dedicated handling for Phenom People, Greenhouse, Avature, Workday and Eightfold application pages, plus a generic filler for ordinary
+       forms. Greenhouse, Lever and Ashby forms embedded in a company's career page are filled in place; other embedded application
+       forms open in their own tab. Custom dropdowns on these platforms were tested against simulations, so please report anything
+       that behaves differently. No dedicated adapters yet for Lever, Ashby, iCIMS or SmartRecruiters. See the
+       <a href="https://github.com/fdjfnd222dd/formhand#supported-sites">full table</a>.</p>
+
+    <h2>Learn more</h2>
+    <p><a href="https://github.com/fdjfnd222dd/formhand/blob/main/PRIVACY_POLICY.md">Privacy policy</a> ·
+       <a href="https://github.com/fdjfnd222dd/formhand/blob/main/store/permissions.md">Why each permission</a> ·
+       <a href="https://github.com/fdjfnd222dd/formhand/blob/main/CHANGELOG.md">Changelog</a> ·
+       <a href="https://github.com/fdjfnd222dd/formhand/issues">Report a problem</a> (never include personal information)</p>
+  </main>
+  <footer>
+    <p>MIT licensed, © 2026 fdjfnd222dd. Formhand is not affiliated with Mozilla or any application platform vendor; product names belong to their owners.</p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,42 @@
+# MANUAL ONLY. Submits the allow-listed package to addons.mozilla.org with web-ext sign.
+# Needs repository secrets WEB_EXT_API_KEY and WEB_EXT_API_SECRET (create at the AMO Developer Hub > Manage API Keys).
+# The FIRST version of a listed add-on needs --amo-metadata (store/amo-metadata.json); do the first submission by hand in the
+# Developer Hub, then use this for updates. Never commit the keys.
+name: Sign on AMO (manual)
+on:
+  workflow_dispatch:
+    inputs:
+      channel:
+        description: listed or unlisted
+        required: true
+        default: unlisted
+        type: choice
+        options: [unlisted, listed]
+permissions:
+  contents: read
+jobs:
+  sign:
+    runs-on: ubuntu-latest
+    environment: amo        # create this environment with required reviewers so a human approves every run
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm i -g web-ext
+      - name: Stage allow-listed files
+        run: |
+          scripts/build-xpi.sh "$RUNNER_TEMP/build" >/dev/null
+          mkdir -p "$RUNNER_TEMP/src" && unzip -q "$RUNNER_TEMP"/build/*.zip -d "$RUNNER_TEMP/src"
+      - name: web-ext sign
+        env:
+          WEB_EXT_API_KEY: ${{ secrets.WEB_EXT_API_KEY }}
+          WEB_EXT_API_SECRET: ${{ secrets.WEB_EXT_API_SECRET }}
+        run: |
+          web-ext sign --source-dir "$RUNNER_TEMP/src" --artifacts-dir "$RUNNER_TEMP/signed" \
+            --channel "${{ inputs.channel }}" \
+            ${{ inputs.channel == 'listed' && '--amo-metadata store/amo-metadata.json' || '' }}
+      - uses: actions/upload-artifact@v4
+        with:
+          name: signed-xpi
+          path: ${{ runner.temp }}/signed/*.xpi
