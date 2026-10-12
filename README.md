@@ -99,9 +99,8 @@ seen them work on your application. The saved pages themselves are not published
 
 ## Install
 
-1. **From addons.mozilla.org** (once listed): {AMO_URL}
-2. **A signed release**: download the `.xpi` from the [Releases](https://github.com/fdjfnd222dd/formhand/releases) page and open it in Firefox.
-3. **From source (developers)**: clone the repository, open `about:debugging#/runtime/this-firefox`,
+1. **Install from the latest GitHub release (.xpi)**: download the `.xpi` from the [Releases](https://github.com/fdjfnd222dd/formhand/releases/latest) page and open it in Firefox.
+2. **From source (developers)**: clone the repository, open `about:debugging#/runtime/this-firefox`,
    choose *Load Temporary Add-on...* and select `manifest.json`. Or `npm install && npm start`.
 
 Requires Firefox 142 or newer (desktop).
@@ -189,6 +188,18 @@ support: [CONTRIBUTING.md](CONTRIBUTING.md). Architecture notes: `CLAUDE.md` and
   form its "Saved: ..." message can be off screen.
 - The hotkey, popup, frame injection and new-tab plumbing is tested with a simulated browser API and by hand, not against a
   real Firefox extension runtime (tests inject the page scripts directly).
+
+## Why I built it
+
+Job application forms ask for the same name, address, links and compliance questions over and over. Most existing
+autofillers send form data to a server or require an account. Formhand was built to keep everything local in the
+browser and to never press Submit, so the person applying stays in control of every application.
+
+## Built with
+
+- Firefox WebExtension, Manifest V3 (`browser.storage.local`, `activeTab`, `scripting`, `commands`)
+- Vanilla JavaScript: no framework, no runtime dependencies, no build step
+- Tests with `node:test` and Playwright (Firefox); linting with `web-ext lint`
 
 ## License
 

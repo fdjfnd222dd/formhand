@@ -520,7 +520,7 @@ Playwright's own Firefox build lives in `~/.cache/ms-playwright` (installed with
 Release Firefox only keeps signed add-ons. `npm run sign` signs this extension as an **unlisted** add-on on
 addons.mozilla.org (signed by Mozilla, never published or searchable) and downloads the `.xpi`.
 1. Once: sign in at https://addons.mozilla.org, open https://addons.mozilla.org/developers/addon/api/key/ and
-   generate credentials. Keep the "JWT issuer" (looks like `user:12345678:901`) and the "JWT secret" out of this repo.
+   generate credentials. Keep the "JWT issuer" (looks like `user:12345:678`) and the "JWT secret" out of this repo.
 2. Every release: bump `"version"` in `manifest.json` (and `package.json`) — AMO accepts each version number once —
    run `npm test` and commit. `tools/sign.js` refuses uncommitted changes and an already-signed version.
 3. Check without uploading: `npm run sign -- --dry-run` (lint, then builds the package and verifies it holds only
@@ -530,7 +530,7 @@ addons.mozilla.org (signed by Mozilla, never published or searchable) and downlo
 4. Sign, keys in the environment for this one command only (a leading space keeps it out of bash history if
    `HISTCONTROL=ignorespace`):
    ```bash
-    WEB_EXT_API_KEY='user:12345678:901' WEB_EXT_API_SECRET='<secret>' npm run sign
+    WEB_EXT_API_KEY='user:12345:678' WEB_EXT_API_SECRET='<secret>' npm run sign
    ```
    (`AMO_JWT_ISSUER` / `AMO_JWT_SECRET` work too.) It uploads, waits for Mozilla's automatic review (usually a few
    minutes), and saves `web-ext-artifacts/formhand_-_job_application_autofill-<version>.xpi` (gitignored).
