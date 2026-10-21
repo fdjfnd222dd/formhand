@@ -103,6 +103,9 @@
       eeo: true,
       answers: [
         { id: 'not', text: 'I am not a protected veteran' },
+        // More specific than 'not': never served, so "I am not a veteran" is true and "a veteran, just not a
+        // protected one" is not (Plante Moran Workday 2026-10-21 offered both; 'not' cannot choose between them).
+        { id: 'none', text: 'I am not a veteran (never served)' },
         { id: 'protected', text: 'I identify as one or more of the classifications of protected veteran' },
         DECLINE,
       ],
@@ -412,6 +415,10 @@
   const no = (t) => /^(no|n|false)\b/.test(t) || (NEG.test(t) && !/^yes\b/.test(t));
   const YES_NO = { yes, no };
 
+  const VET_UNPROTECTED = /\bveteran\b.*\bnot (a |an )?(protected|covered)\b/;
+  // Only the wordings that always meant "not" before: "I have never served in the military" stays the owner's to pick.
+  const VET_NONE = /^non ?veteran\b|\bnot a veteran\b/;
+
   // qid -> { answerId: (normalizedOptionText) -> bool }. 'decline' is shared.
   const RECOGNIZE = {
     workAuth: YES_NO,
@@ -441,7 +448,12 @@
       two: (t) => /\b(two or more|multi ?racial|multiple races|mixed race)\b/.test(t),
     },
     veteran: {
-      not: (t) => /^non ?veteran\b/.test(t) || /\bnot a (protected )?veteran\b|\bnot a protected\b|\bam not (a )?(protected )?veteran\b/.test(t) || (/^no\b/.test(t) && !/\bveteran\b.*\bbut\b/.test(t)),
+      // "I identify as a Veteran, just not a protected Veteran" / "I am a veteran, but not a protected veteran".
+      unprotected: (t) => VET_UNPROTECTED.test(t),
+      // "I am not a Veteran" / "Non-Veteran": never served.
+      none: (t) => !VET_UNPROTECTED.test(t) && VET_NONE.test(t),
+      // "I am not a protected veteran", a plain "No": says nothing about having served.
+      not: (t) => !VET_UNPROTECTED.test(t) && !VET_NONE.test(t) && (/\bnot a (protected )?veteran\b|\bnot a protected\b|\bam not (a )?(protected )?veteran\b/.test(t) || (/^no\b/.test(t) && !/\bveteran\b.*\bbut\b/.test(t))),
       protected: (t) => !NEG.test(t) && (/\bidentify as (one or more|a protected)\b|\bi am a (protected )?veteran\b|\bprotected veteran\b/.test(t) || /^yes\b/.test(t)),
     },
     disability: {
@@ -459,6 +471,19 @@
     let t = matcher.normalize(text).replace(/\b(united states of america|usa)\b/g, ' ');
     if (qid === 'race') t = t.replace(/\bnot (of )?hispanic or latin[oax]\b/g, ' ').replace(/\bnon hispanic\b/g, ' ');
     return t.replace(/\s+/g, ' ').trim();
+  }
+
+  // Options that are also true for a stored answer, besides its own id: the owner who is "not a protected veteran" is
+  // also served by "I am not a veteran" or "a veteran, not protected" when the list offers only one of them (two: we
+  // cannot tell which, null); "never served" also makes "I am not a protected veteran" true.
+  const ACCEPTS = {
+    veteran: { not: ['none', 'unprotected'], none: ['not'] },
+  };
+
+  /** True when an option meaning optionId is a true answer for the stored answerId. */
+  function accepts(qid, answerId, optionId) {
+    if (!optionId) return false;
+    return optionId === answerId || ((ACCEPTS[qid] || {})[answerId] || []).includes(optionId);
   }
 
   /** Answer id an option text means for question qid, or null. */
@@ -511,13 +536,17 @@
       return kind.length === 1 ? { index: kind[0], confidence: 1 } : null;
     }
     const hits = [];
+    const near = [];
     options.forEach((opt, index) => {
       if (opt.disabled) return;
       const id = classify(qid, opt.text || opt.value);
       if (id === answerId) hits.push(index);
+      else if (accepts(qid, answerId, id)) near.push(index);
     });
     // Same meaning offered twice (two "No" variants): we cannot tell which.
     if (hits.length === 1) return { index: hits[0], confidence: 1 };
+    // No option says exactly the stored answer: one that is also true for it (ACCEPTS), if it is the only one.
+    if (!hits.length && near.length === 1) return { index: near[0], confidence: 1 };
     // "Ethnicity" sometimes means Hispanic / Non-Hispanic only (Avature):
     // when every option reads as a Hispanic yes/no, answer with that question.
     if (qid === 'race' && !hits.length && answers.hispanic) {
@@ -554,7 +583,7 @@
     if (desc.inputType === 'checkbox') {
       const text = checkboxLabel || desc.label;
       const means = classify(qid, text);
-      if (means) return means === base ? 'Yes' : '';
+      if (means) return accepts(qid, base, means) ? 'Yes' : '';
       // The question itself is the box ("I acknowledge the privacy notice").
       return qid === 'privacyAck' && answerId === 'acknowledge' ? 'Yes' : '';
     }
@@ -577,7 +606,7 @@
     return '';
   }
 
-  AF.standard = { QUESTIONS, byId, detect, classify, matchOption, fillValue, setAnswers, citizenshipScope };
+  AF.standard = { QUESTIONS, byId, detect, classify, accepts, matchOption, fillValue, setAnswers, citizenshipScope };
 
   if (typeof module === 'object' && module.exports) module.exports = AF.standard;
 })(typeof globalThis !== 'undefined' ? globalThis : this);
