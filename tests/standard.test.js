@@ -104,7 +104,9 @@ test('detect: context fallback for choice fields with a generic label', () => {
 const cls = (qid, text) => std.classify(qid, text);
 
 test('classify: veteran', () => {
-  for (const t of ['I am not a protected veteran', 'No, I am not a protected veteran', 'Non-Veteran']) assert.equal(cls('veteran', t), 'not', t);
+  for (const t of ['I am not a protected veteran', 'No, I am not a protected veteran', 'No']) assert.equal(cls('veteran', t), 'not', t);
+  for (const t of ['Non-Veteran', 'I am not a Veteran', 'No, I am not a veteran']) assert.equal(cls('veteran', t), 'none', t);
+  for (const t of ['I identify as a Veteran, just not a protected Veteran', 'I am a veteran, but not a protected veteran']) assert.equal(cls('veteran', t), 'unprotected', t);
   for (const t of ['I identify as one or more of the classifications of protected veteran', 'Yes, I am a protected veteran']) assert.equal(cls('veteran', t), 'protected', t);
   for (const t of ["I don't wish to answer", 'I choose not to disclose']) assert.equal(cls('veteran', t), 'decline', t);
   assert.notEqual(cls('veteran', 'I am a protected veteran but I choose not to self-identify the classifications to which I belong'), 'decline');
@@ -158,8 +160,8 @@ test('matchOption: single matching option, null on none / ambiguity / placeholde
   assert.equal(std.matchOption([{ text: 'Please Select' }, { text: 'Select...' }], 'gender', 'male'), null);
   // two options mean the same answer: do not guess
   const dup = [{ text: 'I am not a veteran' }, { text: 'I am a veteran, but not a protected veteran' }];
-  assert.equal(std.classify('veteran', dup[0].text), 'not');
-  assert.equal(std.classify('veteran', dup[1].text), 'not');
+  assert.equal(std.classify('veteran', dup[0].text), 'none');
+  assert.equal(std.classify('veteran', dup[1].text), 'unprotected');
   assert.equal(std.matchOption(dup, 'veteran', 'not'), null);
   // disabled options are skipped
   assert.deepEqual(std.matchOption([{ text: 'Male', disabled: true }, { text: 'Male' }], 'gender', 'male'), { index: 1, confidence: 1 });
@@ -279,7 +281,7 @@ test('race: a company-built form list (Indigenous, "Black or African", "Prefer n
   assert.equal(std.classify('race', 'Indigenous Peoples'), 'native');
   assert.equal(std.classify('race', 'Black or African'), 'black');
   assert.equal(std.classify('race', 'Prefer not to inform'), 'decline');
-  assert.equal(std.classify('veteran', 'I am not a veteran'), 'not');
+  assert.equal(std.classify('veteran', 'I am not a veteran'), 'none');
 });
 
 /* ------------------------------------------------------------------ */
@@ -439,4 +441,18 @@ test('classify: "Not sure" / "Unsure" is not a No (a Yes / No / Not sure list st
   assert.equal(std.classify('sponsorship', 'Unsure'), null);
   const opts = ['Yes', 'No', 'Not sure'].map((text) => ({ text, value: text }));
   assert.deepEqual(std.matchOption(opts, 'sponsorship', 'no'), { index: 1, confidence: 1 });
+});
+
+test('veteran "none" (never served): picks "I am not a Veteran" beside "a Veteran, just not a protected Veteran" (Workday 2026-10-21)', () => {
+  const opts = ['I identify as one or more of the classifications of protected Veterans', 'I identify as a Veteran, just not a protected Veteran', 'I am not a Veteran', 'I do not wish to self-identify'].map((text) => ({ text }));
+  assert.deepEqual(std.matchOption(opts, 'veteran', 'none'), { index: 2, confidence: 1 });
+  assert.equal(std.matchOption(opts, 'veteran', 'not'), null, '"not a protected veteran" cannot choose between the two');
+  // a lone "not a veteran" / "not protected" option still serves the plain "not"
+  const lone = [opts[0], opts[2], opts[3]];
+  assert.deepEqual(std.matchOption(lone, 'veteran', 'not'), { index: 1, confidence: 1 });
+  // "never served" also takes "I am not a protected veteran" and a plain No, never "a veteran, not protected"
+  assert.deepEqual(std.matchOption([{ text: 'I am not a protected veteran' }, { text: 'I identify as one or more of the classifications of protected veteran' }], 'veteran', 'none'), { index: 0, confidence: 1 });
+  assert.deepEqual(std.matchOption([{ text: 'Yes' }, { text: 'No' }], 'veteran', 'none'), { index: 1, confidence: 1 });
+  assert.equal(std.matchOption([opts[0], opts[1], opts[3]], 'veteran', 'none'), null);
+  assert.ok(std.accepts('veteran', 'not', 'none') && std.accepts('veteran', 'none', 'not') && !std.accepts('veteran', 'none', 'unprotected'));
 });
