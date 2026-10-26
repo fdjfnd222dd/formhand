@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Formhand - Job Application Autofill",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "Fills job application forms from profiles and answers stored only in your browser. Runs only when you press Alt+Z or use the toolbar button. Never submits. No network access.",
   "author": "fdjfnd222dd",
   "homepage_url": "https://github.com/fdjfnd222dd/formhand",

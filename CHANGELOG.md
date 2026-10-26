@@ -5,6 +5,8 @@ versioning: [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+## [1.0.2] - 2026-10-26
+
 ### Added
 - Veteran status standard answer "I am not a veteran (never served)": picks "I am not a Veteran" on lists that also
   offer "a Veteran, just not a protected Veteran". "Not a protected veteran" still takes a lone "I am not a veteran"
