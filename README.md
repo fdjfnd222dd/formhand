@@ -176,7 +176,7 @@ Tests that use real saved application pages skip themselves (or are not generate
 absent. For 1.0.0 the maintainer's copy, with the private pages, runs 810 tests, all passing; a fresh clone runs 405
 (365 pass, 40 skipped, 0 fail): the hand-written fixtures, the pure-logic tests, the widget harnesses and the privacy guard (`tests/privacy-guard.test.js`: exact permission and host
 lists, no network or dynamic-code APIs in any runtime file). Details and rules for adding platform
-support: [CONTRIBUTING.md](CONTRIBUTING.md). Architecture notes: `CLAUDE.md` and `SPEC.md`.
+support: [CONTRIBUTING.md](CONTRIBUTING.md). Architecture notes: `SPEC.md`.
 
 ## Known limits
 

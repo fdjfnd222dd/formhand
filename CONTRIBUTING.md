@@ -31,7 +31,7 @@ npm start                         # throwaway dev Firefox profile with the exten
 pages skip themselves when those pages are absent (they are gitignored); a fresh clone runs everything else.
 
 ## Where things live
-See "Architecture" in `CLAUDE.md` (the file map, the injection order, the answer pipeline) and the rules in `SPEC.md`.
+See the rules in `SPEC.md`.
 Quick map: `core/matcher.js` (label -> profile key), `core/standard.js` (standard questions), `core/qa.js` (bank rules),
 `core/autofill.js` (the pass), `adapters/*.js` (one per platform), `core/widgets.js` (custom dropdowns).
 
