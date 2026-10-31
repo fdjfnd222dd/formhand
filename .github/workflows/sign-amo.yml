@@ -20,7 +20,7 @@ jobs:
     environment: amo        # create this environment with required reviewers so a human approves every run
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         with:
           node-version: 22
       - run: npm i -g web-ext
